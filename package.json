@@ -24,15 +24,18 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "lerna": "^4.0.0",
-    "prettier": "^2.4.1"
+    "prettier": "^2.4.1",
+    "rimraf": "^3.0.2"
   },
   "engines": {
     "node": ">=10.0.0"
   },
   "scripts": {
+    "prebuild": "lerna run clean --parallel && rimraf dist",
+    "build": "lerna run build",
     "start": "egg-scripts start --daemon --title=egg-server-eggjs-test1",
     "stop": "egg-scripts stop --title=egg-server-eggjs-test1",
-    "dev": "egg-bin dev",
+    "dev": "lerna run clean --parallel && egg-bin dev",
     "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",
     "test-local": "egg-bin test",

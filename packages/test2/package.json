@@ -16,7 +16,7 @@
     "registry": "https://registry.npmmirror.com/"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "clean": "rimraf dist"
   },
   "eggPlugin": {
     "name": "@eggtest/test2"

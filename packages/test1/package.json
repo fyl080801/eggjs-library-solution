@@ -10,13 +10,16 @@
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "dist",
+    "app",
+    "app.js"
   ],
   "publishConfig": {
     "registry": "https://registry.npmmirror.com/"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "clean": "rimraf dist",
+    "build": "vue-cli-service build"
   },
   "eggPlugin": {
     "name": "@eggtest/test1",

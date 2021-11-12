@@ -1,6 +1,9 @@
 'use strict';
 
 const path = require('path');
+const Service = require('@vue/cli-service');
+const fs = require('fs');
+
 const PAGES = Symbol('Application#pages');
 
 module.exports = {
@@ -10,8 +13,25 @@ module.exports = {
     }
     return this[PAGES];
   },
-  addPageConfig(key, config) {
-    this.pageConfigs[key] = config;
+  addPageConfig(name, path) {
+    const service = new Service(path);
+
+    service.init(process.env.NODE_ENV);
+
+    const config = service.resolveWebpackConfig();
+
+    const { enableWebpack } = this.config.pages || {};
+
+    if (!fs.existsSync(config.output.path) && enableWebpack) {
+      this.pageConfigs[name] = {
+        config,
+        devMiddleware: {
+          publicPath: config.output.publicPath,
+          serverSideRender: true,
+        },
+        hotClient: {},
+      };
+    }
   },
   injectView(name, view) {
     const config = this.pageConfigs[name];
