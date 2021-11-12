@@ -2,20 +2,29 @@
 
 const { name } = require('./package.json');
 const path = require('path');
+const Service = require('@vue/cli-service');
 
 module.exports = (app) => {
-  app.addPageConfig(name, {
-    config: {
-      mode: 'development',
-      entry: [path.resolve(__dirname, './src/main.js')],
-      output: {
-        publicPath: '/public/',
-      },
-    },
-  });
+  // 之后要判断是否是编译的包
+  const isDist = false;
 
-  app.router.get('/index', (ctx) => {
-    ctx.body = 'aaa';
+  // 不存在dist走webpack，存在dist走静态资源
+  if (!isDist) {
+    const service = new Service(path.resolve(__dirname, './'));
+    service.init(process.env.NODE_ENV);
+    const config = service.resolveWebpackConfig();
+
+    app.addPageConfig(name, {
+      config,
+      devMiddleware: {
+        publicPath: config.output.publicPath,
+        serverSideRender: true,
+      },
+      hotClient: {},
+    });
+  }
+
+  app.router.get('/index', app.injectView(name, 'index.html'), (ctx) => {
+    ctx.body = { text: 'asdasdasdas' };
   });
 };
-// { amd?, bail?, cache?, context?, dependencies?, devServer?, devtool?, entry?, externals?, infrastructureLogging?, loader?, mode?, module?, name?, node?, optimization?, output?, parallelism?, performance?, plugins?, profile?, recordsInputPath?, recordsOutputPath?, recordsPath?, resolve?, resolveLoader?, serve?, stats?, target?, watch?, watchOptions? }

@@ -5,15 +5,15 @@ const koaWebpack = require('koa-webpack');
 module.exports = (options, app) => {
   const { matcher = () => {} } = app.config.pages || '';
 
-  const middlewares = {};
+  const middlewareMap = {};
 
   Object.keys(app.pageConfigs).forEach((key) => {
-    middlewares[key] = koaWebpack(app.pageConfigs[key]);
+    middlewareMap[key] = koaWebpack(app.pageConfigs[key]);
   });
 
   return async function (ctx, next) {
-    const matched = middlewares[matcher(ctx)];
+    const matched = middlewareMap[matcher(ctx)];
 
-    (matched && (await matched)(ctx, next)) || next();
+    return (matched && (await matched)(ctx, next)) || next();
   };
 };

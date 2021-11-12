@@ -19,10 +19,17 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "eggPlugin": {
-    "name": "@eggtest/pages"
+    "name": "@eggtest/pages",
+    "dep": [
+      "nunjucks"
+    ]
   },
   "devDependencies": {
     "koa-webpack": "^6.0.0",
     "webpack": "^4.46.0"
+  },
+  "dependencies": {
+    "egg-request-curl": "^1.1.0",
+    "egg-view-nunjucks": "^2.3.0"
   }
 }

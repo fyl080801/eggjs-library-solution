@@ -6,6 +6,14 @@ module.exports = {
   static: {
     enable: false,
   },
+  nunjucks: {
+    enable: true,
+    package: 'egg-view-nunjucks',
+  },
+  RequestCurl: {
+    enable: !!process.env.curl,
+    package: 'egg-request-curl',
+  },
   '@eggtest/pages': {
     enable: true,
   },
