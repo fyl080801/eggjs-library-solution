@@ -21,6 +21,7 @@
   "eggPlugin": {
     "name": "@eggtest/pages",
     "dep": [
+      "static",
       "nunjucks"
     ]
   },

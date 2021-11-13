@@ -1,10 +1,40 @@
 'use strict';
 
 const path = require('path');
-const Service = require('@vue/cli-service');
 const fs = require('fs');
 
 const PAGES = Symbol('Application#pages');
+
+const getCallerFile = function () {
+  let filename;
+
+  const pst = Error.prepareStackTrace;
+
+  Error.prepareStackTrace = function (err, stack) {
+    return stack;
+  };
+
+  try {
+    let callerfile;
+    const err = new Error();
+    const currentfile = err.stack.shift().getFileName();
+
+    while (err.stack.length) {
+      callerfile = err.stack.shift().getFileName();
+
+      if (currentfile !== callerfile) {
+        filename = callerfile;
+        break;
+      }
+    }
+  } catch (err) {
+    //
+  }
+
+  Error.prepareStackTrace = pst;
+
+  return path.dirname(filename);
+};
 
 module.exports = {
   get pageConfigs() {
@@ -13,16 +43,21 @@ module.exports = {
     }
     return this[PAGES];
   },
-  addPageConfig(name, path) {
-    const service = new Service(path);
-
-    service.init(process.env.NODE_ENV);
-
-    const config = service.resolveWebpackConfig();
-
+  addPageConfig(name, dir) {
+    const dist = dir || 'dist';
+    const dirname = getCallerFile.call(this);
+    const staticPath = path.resolve(dirname, dist);
     const { enableWebpack } = this.config.pages || {};
 
-    if (!fs.existsSync(config.output.path) && enableWebpack) {
+    if (!fs.existsSync(staticPath) && enableWebpack) {
+      const Service = require('@vue/cli-service');
+
+      const ins = new Service(dirname);
+
+      ins.init(process.env.NODE_ENV);
+
+      const config = ins.resolveWebpackConfig();
+
       this.pageConfigs[name] = {
         config,
         devMiddleware: {
@@ -31,6 +66,8 @@ module.exports = {
         },
         hotClient: {},
       };
+    } else {
+      this.pageConfigs[name] = staticPath;
     }
   },
   injectView(name, view) {
@@ -39,8 +76,10 @@ module.exports = {
     return async (ctx, next) => {
       await next();
 
+      const data = (typeof ctx.body === 'object' && ctx.body) || {};
+
       // 注入视图输出
-      if (config) {
+      if (typeof config !== 'string') {
         // dev
         const viewUrl = `${ctx.request.protocol}://${path.join(
           ctx.request.host,
@@ -55,12 +94,9 @@ module.exports = {
 
         const content = response.data.toString();
 
-        ctx.body = await ctx.renderString(
-          content,
-          (typeof ctx.body === 'object' && ctx.body) || {},
-        );
+        ctx.body = await ctx.renderString(content, data);
       } else {
-        // packed
+        await ctx.render(path.resolve(config, view), data);
       }
 
       ctx.set('Content-Type', 'text/html');

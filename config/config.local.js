@@ -5,8 +5,12 @@ module.exports = () => {
 
   config.pages = {
     enableWebpack: true,
-    matcher: () => {
-      return '@eggtest/test1';
+    matcher: (ctx) => {
+      const key = Object.keys(ctx.app.pageConfigs).find((p) => {
+        return ctx.request.url.indexOf(`/${p}/`) === 0;
+      });
+
+      return key || '@eggtest/test1';
     },
   };
 

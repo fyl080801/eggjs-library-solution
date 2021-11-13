@@ -16,9 +16,23 @@
     "registry": "https://registry.npmmirror.com/"
   },
   "scripts": {
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "build": "vue-cli-service build --target lib ./src/main.js"
   },
   "eggPlugin": {
     "name": "@eggtest/test2"
+  },
+  "dependencies": {
+    "core-js": "^3.19.1",
+    "vue": "^2.6.14"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.5.15",
+    "@vue/cli-plugin-eslint": "^4.5.15",
+    "@vue/cli-service": "^4.5.15",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.12.1",
+    "eslint-plugin-vue": "^8.0.3",
+    "vue-template-compiler": "^2.6.14"
   }
 }

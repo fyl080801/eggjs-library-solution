@@ -9,10 +9,10 @@ function resolve(dir) {
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? '/public/' : `/${name}/`,
+  publicPath: `/${name}/`, // process.env.NODE_ENV === 'production' ? '/public/' : `/${name}/`,
   // outputDir: '../server/app/public',
   assetsDir: 'static',
-  lintOnSave: process.env.NODE_ENV === 'development',
+  // lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
   configureWebpack: {
     resolve: {
