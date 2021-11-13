@@ -14,13 +14,13 @@ module.exports = {
     enable: !!process.env.curl,
     package: 'egg-request-curl',
   },
-  '@eggtest/pages': {
+  '@egglib/webpack-pages': {
     enable: true,
   },
-  '@eggtest/test1': {
+  '@egglib/test1': {
     enable: true,
   },
-  '@eggtest/test2': {
+  '@egglib/test2': {
     enable: true,
   },
 };

@@ -15,15 +15,15 @@ const getCallerFile = function () {
   };
 
   try {
-    let callerfile;
+    let callerFile;
     const err = new Error();
-    const currentfile = err.stack.shift().getFileName();
+    const currentFile = err.stack.shift().getFileName();
 
     while (err.stack.length) {
-      callerfile = err.stack.shift().getFileName();
+      callerFile = err.stack.shift().getFileName();
 
-      if (currentfile !== callerfile) {
-        filename = callerfile;
+      if (currentFile !== callerFile) {
+        filename = callerFile;
         break;
       }
     }

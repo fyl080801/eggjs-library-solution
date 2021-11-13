@@ -1,5 +1,5 @@
 {
-  "name": "@eggtest/test1",
+  "name": "@egglib/test1",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "fyl080801 <fyl080801@hotmail.com>",
@@ -22,13 +22,15 @@
     "build": "vue-cli-service build"
   },
   "eggPlugin": {
-    "name": "@eggtest/test1",
+    "name": "@egglib/test1",
     "dep": [
-      "@eggtest/pages"
+      "@egglib/webpack-pages"
     ]
   },
   "dependencies": {
+    "@vue/composition-api": "^1.4.0-beta.0",
     "core-js": "^3.19.1",
+    "typedi": "^0.10.0",
     "vue": "^2.6.14"
   },
   "devDependencies": {

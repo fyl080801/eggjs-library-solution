@@ -9,10 +9,8 @@ function resolve(dir) {
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
-  publicPath: `/${name}/`, // process.env.NODE_ENV === 'production' ? '/public/' : `/${name}/`,
-  // outputDir: '../server/app/public',
+  publicPath: `/${name}/`,
   assetsDir: 'static',
-  // lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
   configureWebpack: {
     resolve: {
@@ -20,12 +18,13 @@ module.exports = {
         '@': resolve('src'),
       },
     },
-    output: {
-      // 把子应用打包成 umd 库格式
-      library: `${name}-[name]`,
-      libraryTarget: 'umd',
-      jsonpFunction: `webpackJsonp-${name}`,
-    },
+    // qiankun need it
+    // output: {
+    //   // 把子应用打包成 umd 库格式
+    //   library: `${name}-[name]`,
+    //   libraryTarget: 'umd',
+    //   jsonpFunction: `webpackJsonp-${name}`,
+    // },
     devtool: process.env.NODE_ENV === 'development' ? 'source-map' : undefined,
     performance: {
       hints: false,

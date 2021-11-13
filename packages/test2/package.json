@@ -1,5 +1,5 @@
 {
-  "name": "@eggtest/test2",
+  "name": "@egglib/test2",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "fyl080801 <fyl080801@hotmail.com>",
@@ -17,10 +17,10 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "vue-cli-service build --target lib ./src/main.js"
+    "build": "vue-cli-service build --target lib --name index ./src/main.js"
   },
   "eggPlugin": {
-    "name": "@eggtest/test2"
+    "name": "@egglib/test2"
   },
   "dependencies": {
     "core-js": "^3.19.1",

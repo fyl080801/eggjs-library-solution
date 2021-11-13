@@ -10,7 +10,7 @@ module.exports = () => {
         return ctx.request.url.indexOf(`/${p}/`) === 0;
       });
 
-      return key || '@eggtest/test1';
+      return key || '@egglib/test1';
     },
   };
 

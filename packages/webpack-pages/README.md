@@ -1,11 +1,11 @@
-# `@eggtest/pages`
+# `@egglib/pages`
 
 > TODO: description
 
 ## Usage
 
 ```
-const pages = require('@eggtest/pages');
+const pages = require('@egglib/pages');
 
 // TODO: DEMONSTRATE API
 ```
