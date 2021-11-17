@@ -11,8 +11,8 @@ module.exports = (options, app) => {
 
   delete app.config.static.prefix;
 
-  Object.keys(app.pageConfigs).forEach((key) => {
-    const config = app.pageConfigs[key];
+  Object.keys(app.staticConfigs).forEach((key) => {
+    const config = app.staticConfigs[key];
 
     if (typeof config === 'string') {
       app.config.static.dir.push({

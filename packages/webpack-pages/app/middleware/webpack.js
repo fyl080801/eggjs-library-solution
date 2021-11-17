@@ -7,8 +7,8 @@ module.exports = (options, app) => {
 
   const middlewareMap = {};
 
-  Object.keys(app.pageConfigs).forEach((key) => {
-    middlewareMap[key] = koaWebpack(app.pageConfigs[key]);
+  Object.keys(app.webpackConfigs).forEach((key) => {
+    middlewareMap[key] = koaWebpack(app.webpackConfigs[key]);
   });
 
   return async function (ctx, next) {

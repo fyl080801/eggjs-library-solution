@@ -26,7 +26,7 @@ module.exports = (appInfo) => {
     overrideDefault: true,
     overrideIgnore: true,
     watchDirs: ['app', 'config', 'packages', 'app.js', 'agent.js'],
-    ignoreDirs: ['src'],
+    ignoreDirs: ['src/**/*', '.cache/**/*'],
   };
 
   // add your middleware config here

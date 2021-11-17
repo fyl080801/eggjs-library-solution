@@ -5,6 +5,14 @@
   "author": "fyl080801 <fyl080801@hotmail.com>",
   "homepage": "",
   "license": "ISC",
+  "main": "./dist/index.umd.min.js",
+  "module": "./src/main.js",
+  "exports": {
+    ".": {
+      "require": "./dist/index.umd.min.js",
+      "import": "./src/main.js"
+    }
+  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -31,7 +39,7 @@
     "@vue/cli-plugin-eslint": "^4.5.15",
     "@vue/cli-service": "^4.5.15",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.12.1",
+    "eslint": "7.12.1",
     "eslint-plugin-vue": "^8.0.3",
     "vue-template-compiler": "^2.6.14"
   }

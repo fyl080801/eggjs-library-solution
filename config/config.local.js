@@ -6,7 +6,7 @@ module.exports = () => {
   config.pages = {
     enableWebpack: true,
     matcher: (ctx) => {
-      const key = Object.keys(ctx.app.pageConfigs).find((p) => {
+      const key = Object.keys(ctx.app.staticConfigs).find((p) => {
         return ctx.request.url.indexOf(`/${p}/`) === 0;
       });
 

@@ -4,6 +4,7 @@ const path = require('path');
 const fs = require('fs');
 
 const PAGES = Symbol('Application#pages');
+const STATICS = Symbol('Application#statcis');
 
 const getCallerFile = function () {
   let filename;
@@ -37,19 +38,26 @@ const getCallerFile = function () {
 };
 
 module.exports = {
-  get pageConfigs() {
+  get webpackConfigs() {
     if (!this[PAGES]) {
       this[PAGES] = {};
     }
     return this[PAGES];
+  },
+  get staticConfigs() {
+    if (!this[STATICS]) {
+      this[STATICS] = {};
+    }
+    return this[STATICS];
   },
   addPageConfig(name, dir) {
     const dist = dir || 'dist';
     const dirname = getCallerFile.call(this);
     const staticPath = path.resolve(dirname, dist);
     const { enableWebpack } = this.config.pages || {};
+    const distExists = fs.existsSync(staticPath);
 
-    if (!fs.existsSync(staticPath) && enableWebpack) {
+    if (!distExists && enableWebpack) {
       const Service = require('@vue/cli-service');
 
       const ins = new Service(dirname);
@@ -58,7 +66,7 @@ module.exports = {
 
       const config = ins.resolveWebpackConfig();
 
-      this.pageConfigs[name] = {
+      this.webpackConfigs[name] = {
         config,
         devMiddleware: {
           publicPath: config.output.publicPath,
@@ -66,12 +74,21 @@ module.exports = {
         },
         hotClient: {},
       };
-    } else {
-      this.pageConfigs[name] = staticPath;
+    } else if (distExists) {
+      this.staticConfigs[name] = staticPath;
+    }
+  },
+  addStaticConfig(name, dir) {
+    const dist = dir || 'dist';
+    const dirname = getCallerFile.call(this);
+    const staticPath = path.resolve(dirname, dist);
+
+    if (fs.existsSync(staticPath)) {
+      this.staticConfigs[name] = staticPath;
     }
   },
   injectView(name, view) {
-    const config = this.pageConfigs[name];
+    const config = this.webpackConfigs[name] || this.staticConfigs[name];
 
     return async (ctx, next) => {
       await next();
