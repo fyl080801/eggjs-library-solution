@@ -14,7 +14,7 @@ module.exports = {
     enable: !!process.env.curl,
     package: 'egg-request-curl',
   },
-  '@egglib/webpack-pages': {
+  '@egglib/statics-webpack': {
     enable: true,
   },
   '@egglib/test1': {

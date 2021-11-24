@@ -3,9 +3,9 @@
 module.exports = () => {
   const config = (exports = {});
 
-  config.pages = {
+  config.statics = {
     matcher: (ctx) => {
-      const key = Object.keys(ctx.app.staticConfigs).find((p) => {
+      const key = Object.keys(ctx.app.statics).find((p) => {
         return ctx.request.url.indexOf(`/${p}/`) === 0;
       });
 

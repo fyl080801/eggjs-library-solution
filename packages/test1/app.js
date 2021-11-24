@@ -9,7 +9,7 @@ module.exports = (app) => {
     ctx.body = { text: 'asdasdasdas' };
   });
 
-  app.router.get('*', app.injectView(name, 'index.html'), (ctx) => {
+  app.router.get('*', app.viewInject(name, 'index.html'), (ctx) => {
     ctx.body = { text: 'zzzz' };
   });
 };

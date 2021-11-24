@@ -24,7 +24,7 @@
   "eggPlugin": {
     "name": "@egglib/test1",
     "dep": [
-      "@egglib/webpack-pages"
+      "@egglib/statics-webpack"
     ]
   },
   "dependencies": {

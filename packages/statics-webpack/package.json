@@ -1,5 +1,5 @@
 {
-  "name": "@egglib/webpack-pages",
+  "name": "@egglib/statics-webpack",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "fyl080801 <fyl080801@hotmail.com>",
@@ -19,7 +19,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "eggPlugin": {
-    "name": "@egglib/webpack-pages",
+    "name": "@egglib/statics-webpack",
     "dep": [
       "static",
       "nunjucks"

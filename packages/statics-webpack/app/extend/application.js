@@ -3,7 +3,7 @@
 const path = require('path');
 const fs = require('fs');
 
-const PAGES = Symbol('Application#pages');
+const WEBPACK = Symbol('Application#webpack');
 const STATICS = Symbol('Application#statcis');
 
 const getCallerFile = function () {
@@ -39,24 +39,24 @@ const getCallerFile = function () {
 
 module.exports = {
   get webpackConfigs() {
-    if (!this[PAGES]) {
-      this[PAGES] = {};
+    if (!this[WEBPACK]) {
+      this[WEBPACK] = {};
     }
-    return this[PAGES];
+    return this[WEBPACK];
   },
-  get staticConfigs() {
+  get statics() {
     if (!this[STATICS]) {
       this[STATICS] = {};
     }
     return this[STATICS];
   },
   addPageConfig(name, dir) {
-    const { clients = {} } = this.config.pages || {};
+    const { clients = {} } = this.config.statics || {};
     const dirname = getCallerFile.call(this);
     const client = clients[name] || {};
 
     if (!client.type || clients[name].type === 'dist') {
-      this.staticConfigs[name] = path.resolve(dirname, dir || 'dist');
+      this.statics[name] = path.resolve(dirname, dir || 'dist');
     } else if (client.type === 'webpack') {
       const Service = require('@vue/cli-service');
       const ins = new Service(dirname);
@@ -75,8 +75,8 @@ module.exports = {
       };
     }
   },
-  injectView(name, view) {
-    const { clients = {} } = this.config.pages || {};
+  viewInject(name, view) {
+    const { clients = {} } = this.config.statics || {};
     const client = clients[name] || {};
 
     return async (ctx, next) => {
@@ -85,7 +85,7 @@ module.exports = {
       const data = (typeof ctx.body === 'object' && ctx.body) || {};
 
       if (!client.type || client.type === 'dist') {
-        const config = this.staticConfigs[name];
+        const config = this.statics[name];
         await ctx.render(path.resolve(config, view), data);
       } else if (client.type === 'webpack') {
         const config = this.webpackConfigs[name];
