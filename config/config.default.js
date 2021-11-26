@@ -29,6 +29,13 @@ module.exports = (appInfo) => {
     ignoreDirs: ['src/**/*', '.cache/**/*'],
   };
 
+  config.cluster = {
+    listen: {
+      port: process.env.PORT || 3001,
+      hostname: '0.0.0.0',
+    },
+  };
+
   // add your middleware config here
   config.middleware = [];
 
