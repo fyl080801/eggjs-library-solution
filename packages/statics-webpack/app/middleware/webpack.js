@@ -3,7 +3,7 @@
 const koaWebpack = require('koa-webpack');
 
 module.exports = (options, app) => {
-  const { matcher = () => {} } = app.config.pages || '';
+  const { matcher = () => {} } = app.config.statics || '';
 
   const middlewareMap = {};
 

@@ -1,9 +1,9 @@
 'use strict';
 
 module.exports = (app) => {
-  const { enableWebpack } = app.config.pages || {};
+  const { clients = {} } = app.config.statics || {};
 
-  if (enableWebpack) {
+  if (Object.keys(clients).find((key) => clients[key].type === 'webpack')) {
     app.config.coreMiddleware.push('webpack');
   }
 

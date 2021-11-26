@@ -3,7 +3,7 @@
 const path = require('path');
 const fs = require('fs');
 
-const PAGES = Symbol('Application#pages');
+const WEBPACK = Symbol('Application#webpack');
 const STATICS = Symbol('Application#statcis');
 
 const getCallerFile = function () {
@@ -39,27 +39,26 @@ const getCallerFile = function () {
 
 module.exports = {
   get webpackConfigs() {
-    if (!this[PAGES]) {
-      this[PAGES] = {};
+    if (!this[WEBPACK]) {
+      this[WEBPACK] = {};
     }
-    return this[PAGES];
+    return this[WEBPACK];
   },
-  get staticConfigs() {
+  get statics() {
     if (!this[STATICS]) {
       this[STATICS] = {};
     }
     return this[STATICS];
   },
   addPageConfig(name, dir) {
-    const dist = dir || 'dist';
+    const { clients = {} } = this.config.statics || {};
     const dirname = getCallerFile.call(this);
-    const staticPath = path.resolve(dirname, dist);
-    const { enableWebpack } = this.config.pages || {};
-    const distExists = fs.existsSync(staticPath);
+    const client = clients[name] || {};
 
-    if (!distExists && enableWebpack) {
+    if (!client.type || clients[name].type === 'dist') {
+      this.statics[name] = path.resolve(dirname, dir || 'dist');
+    } else if (client.type === 'webpack') {
       const Service = require('@vue/cli-service');
-
       const ins = new Service(dirname);
 
       ins.init(process.env.NODE_ENV);
@@ -74,30 +73,23 @@ module.exports = {
         },
         hotClient: {},
       };
-    } else if (distExists) {
-      this.staticConfigs[name] = staticPath;
     }
   },
-  addStaticConfig(name, dir) {
-    const dist = dir || 'dist';
-    const dirname = getCallerFile.call(this);
-    const staticPath = path.resolve(dirname, dist);
-
-    if (fs.existsSync(staticPath)) {
-      this.staticConfigs[name] = staticPath;
-    }
-  },
-  injectView(name, view) {
-    const config = this.webpackConfigs[name] || this.staticConfigs[name];
+  viewInject(name, view) {
+    const { clients = {} } = this.config.statics || {};
+    const client = clients[name] || {};
 
     return async (ctx, next) => {
       await next();
 
       const data = (typeof ctx.body === 'object' && ctx.body) || {};
 
-      // 注入视图输出
-      if (typeof config !== 'string') {
-        // dev
+      if (!client.type || client.type === 'dist') {
+        const config = this.statics[name];
+        await ctx.render(path.resolve(config, view), data);
+      } else if (client.type === 'webpack') {
+        const config = this.webpackConfigs[name];
+
         const viewUrl = `${ctx.request.protocol}://${path.join(
           ctx.request.host,
           (config.devMiddleware || {}).publicPath,
@@ -112,8 +104,6 @@ module.exports = {
         const content = response.data.toString();
 
         ctx.body = await ctx.renderString(content, data);
-      } else {
-        await ctx.render(path.resolve(config, view), data);
       }
 
       ctx.set('Content-Type', 'text/html');
