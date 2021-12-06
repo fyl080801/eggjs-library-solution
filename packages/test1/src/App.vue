@@ -16,5 +16,6 @@ export default defineComponent({
   <div>
     aaa
     <hello />
+    <testCmp />
   </div>
 </template>
