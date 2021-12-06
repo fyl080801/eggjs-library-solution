@@ -11,17 +11,17 @@ module.exports = () => {
   };
 
   config.statics = {
-    matcher: (ctx) => {
-      const key = Object.keys(ctx.app.statics).find((p) => {
-        return ctx.request.url.indexOf(`/${p}/`) === 0;
-      });
-
-      return key || '@egglib/test1';
-    },
+    default: '@egglib/test1',
     clients: {
       '@egglib/test1': {
         type: 'webpack',
       },
+      // '@egglib/di': {
+      //   // dir: 'src',
+      // },
+      // '@egglib/test2': {
+      //   dir: 'src',
+      // },
     },
   };
 

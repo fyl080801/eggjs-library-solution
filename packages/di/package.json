@@ -17,13 +17,14 @@
     "access": "public"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "clean": "rimraf dist",
+    "build": "vue-cli-service build --target lib --name index ./src/main.js"
   },
   "dependencies": {
     "typedi": "^0.10.0"
   },
   "eggPlugin": {
-    "name": "@tpaas/di",
+    "name": "@egglib/di",
     "dep": [
       "@egglib/statics"
     ]

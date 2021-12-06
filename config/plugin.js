@@ -18,6 +18,9 @@ module.exports = {
     enable: true,
     package: '@egglib/statics-webpack',
   },
+  '@egglib/di': {
+    enable: true,
+  },
   '@egglib/test1': {
     enable: true,
   },

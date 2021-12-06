@@ -55,8 +55,8 @@ module.exports = {
     const dirname = getCallerFile.call(this);
     const client = clients[name] || {};
 
-    if (!client.type || clients[name].type === 'dist') {
-      this.statics[name] = path.resolve(dirname, dir || 'dist');
+    if (!client.type || client.type === 'dist') {
+      this.statics[name] = path.resolve(dirname, client.dir || dir || 'dist');
     } else if (client.type === 'webpack') {
       const Service = require('@vue/cli-service');
       const ins = new Service(dirname);
