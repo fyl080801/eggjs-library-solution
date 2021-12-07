@@ -20,7 +20,7 @@ module.exports = () => {
       //   // dir: 'src',
       // },
       '@egglib/test2': {
-        // dir: 'src',
+        dir: 'src',
       },
     },
   };
