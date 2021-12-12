@@ -1,21 +1,13 @@
 {
+  "root": true,
   "env": {
     "node": true
   },
-  "extends": [
-    "plugin:vue/essential",
-    "eslint:recommended",
-    "plugin:prettier/recommended"
-  ],
+  "extends": ["plugin:vue/essential", "eslint:recommended"],
   "parserOptions": {
     "parser": "babel-eslint"
   },
   "rules": {
-    "semi": "off",
-    "no-unused-vars": "warn",
-    "vue/multi-word-component-names": "off",
-    "arrow-parens": "off",
-    "array-bracket-spacing": "off",
-    "no-debugger": "off"
+    "no-unused-vars": "warn"
   }
 }

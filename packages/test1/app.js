@@ -10,6 +10,6 @@ module.exports = (app) => {
   // });
 
   app.router.get('*', app.viewInject(name, 'index.html'), (ctx) => {
-    ctx.body = { text: 'zzzz' };
+    // ctx.body = {};
   });
 };

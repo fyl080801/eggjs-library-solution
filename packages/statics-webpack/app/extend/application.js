@@ -76,13 +76,16 @@ module.exports = {
     }
   },
   viewInject(name, view) {
-    const { clients = {} } = this.config.statics || {};
+    const { clients = {}, env = {} } = this.config.statics || {};
     const client = clients[name] || {};
 
     return async (ctx, next) => {
       await next();
 
-      const data = (typeof ctx.body === 'object' && ctx.body) || {};
+      const data = Object.assign(
+        env,
+        (typeof ctx.body === 'object' && ctx.body) || {},
+      );
 
       if (!client.type || client.type === 'dist') {
         const config = this.statics[name];

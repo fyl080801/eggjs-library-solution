@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <title><%= htmlWebpackPlugin.options.title %></title>
-    <!-- <script src="https://unpkg.com/systemjs@6.11.0/dist/s.js"></script> -->
   </head>
-  <body>
+  <!-- node 层变量 -->
+  <body data-testdata="{{testdata}}">
     <noscript>
       <strong
         >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
@@ -17,14 +17,18 @@
       >
     </noscript>
     <div id="app"></div>
-    <!-- <script type="systemjs-module" src="/@eggjs/test2/index.umd.js"></script> -->
     <!-- <script type="systemjs-importmap">
       {
         "imports": {
-          "@egglib/test2": "/@egglib/test2/main.js"
+          "@egglib/test2": "/@egglib/test2/index.umd.min.js"
         }
       }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/systemjs@6.11.0/dist/system.min.js"></script> -->
+    <!-- <script>
+      System.import('http://localhost:7001/@egglib/test2/index.umd.min.js');
     </script> -->
+
     <!-- built files will be auto injected -->
   </body>
 </html>

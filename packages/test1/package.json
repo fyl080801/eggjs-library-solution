@@ -24,7 +24,8 @@
     "seajs": "^3.0.3",
     "systemjs": "^6.11.0",
     "typedi": "^0.10.0",
-    "vue": "^2.6.14"
+    "vue": "^2.6.14",
+    "@egglib/di": "^0.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.15",
