@@ -19,9 +19,9 @@ module.exports = () => {
       // '@egglib/di': {
       //   // dir: 'src',
       // },
-      // '@egglib/test2': {
-      //   dir: 'src',
-      // },
+      '@egglib/test2': {
+        dir: 'src',
+      },
     },
     env: {
       testdata: 'aaa',

@@ -9,7 +9,6 @@ Vue.config.productionTip = false;
 Vue.use(CompositionApi);
 // const paths = ['@egglib/test2'];
 
-// eslint-disable-next-line no-undef
 // Promise.all([paths.map(async (item) => await System.import(item))]).then(
 //   (res) => {
 //     console.log(res);
@@ -19,6 +18,9 @@ Vue.use(CompositionApi);
 //     }).$mount('#app');
 //   },
 // );
+
+// // eslint-disable-next-line no-undef
+// System.import('/@egglib/test2/main.js');
 
 new Vue({
   render: (h) => h(App),
