@@ -9,9 +9,9 @@ export const useServiceProvider = (register) => {
 };
 
 export const getService = (name) => {
-  const provider = Container.get(name);
-
-  return provider(Container);
+  return Container.get(name);
 };
 
-export const startup = (packages) => {};
+export const getServices = (name) => {
+  return Container.getMany(name);
+};
