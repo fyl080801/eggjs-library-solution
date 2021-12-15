@@ -55,8 +55,8 @@ module.exports = {
     const dirname = getCallerFile.call(this);
     const client = clients[name] || {};
 
-    if (!client.type || clients[name].type === 'dist') {
-      this.statics[name] = path.resolve(dirname, dir || 'dist');
+    if (!client.type || client.type === 'dist') {
+      this.statics[name] = path.resolve(dirname, client.dir || dir || 'dist');
     } else if (client.type === 'webpack') {
       const Service = require('@vue/cli-service');
       const ins = new Service(dirname);
@@ -76,13 +76,16 @@ module.exports = {
     }
   },
   viewInject(name, view) {
-    const { clients = {} } = this.config.statics || {};
+    const { clients = {}, env = {} } = this.config.statics || {};
     const client = clients[name] || {};
 
     return async (ctx, next) => {
       await next();
 
-      const data = (typeof ctx.body === 'object' && ctx.body) || {};
+      const data = Object.assign(
+        env,
+        (typeof ctx.body === 'object' && ctx.body) || {},
+      );
 
       if (!client.type || client.type === 'dist') {
         const config = this.statics[name];

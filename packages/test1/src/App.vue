@@ -1,13 +1,20 @@
 <script>
 import { defineComponent } from '@vue/composition-api';
 import Hello from './components/Hello.vue';
+import { getService } from '@egglib/di';
 
 export default defineComponent({
   components: {
     Hello,
   },
   setup() {
-    return {};
+    const cons = getService('main.console');
+
+    return {
+      ontest() {
+        cons();
+      },
+    };
   },
 });
 </script>
@@ -15,6 +22,8 @@ export default defineComponent({
 <template>
   <div>
     aaa
+    <button @click="ontest">test</button>
     <hello />
+    <testCmp />
   </div>
 </template>
