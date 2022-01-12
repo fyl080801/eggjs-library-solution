@@ -72,7 +72,7 @@ function koaConnect(connectMiddleware) {
 
 module.exports = () => {
   return async (ctx, next) => {
-    const server = await ctx.service.vite.getServer(ctx);
+    const server = await ctx.app.getServer(ctx);
 
     if (server && server.middlewares) {
       // 因为vite的中间件是基于express，而egg是基于koa，因此要转换

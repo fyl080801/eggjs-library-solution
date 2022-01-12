@@ -25,6 +25,9 @@ module.exports = () => {
       '@egglib/test3': {
         type: 'dev',
       },
+      '@egglib/test4': {
+        type: 'dev',
+      },
     },
     env: {
       testdata: 'aaa',

@@ -30,4 +30,7 @@ module.exports = {
   '@egglib/test3': {
     enable: true,
   },
+  '@egglib/test4': {
+    enable: true,
+  },
 };
