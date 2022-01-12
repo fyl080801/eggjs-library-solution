@@ -1,0 +1,1 @@
+const xxx = 'sss';

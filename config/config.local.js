@@ -11,16 +11,19 @@ module.exports = () => {
   };
 
   config.statics = {
-    default: '@egglib/test1',
+    default: '@egglib/test3',
     clients: {
-      '@egglib/test1': {
-        type: 'webpack',
-      },
-      // '@egglib/di': {
-      //   // dir: 'src',
+      // '@egglib/test1': {
+      //   type: 'webpack',
       // },
-      '@egglib/test2': {
-        dir: 'src',
+      // // '@egglib/di': {
+      // //   // dir: 'src',
+      // // },
+      // '@egglib/test2': {
+      //   dir: 'src',
+      // },
+      '@egglib/test3': {
+        type: 'dev',
       },
     },
     env: {

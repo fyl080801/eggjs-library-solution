@@ -16,15 +16,18 @@ module.exports = {
   },
   '@egglib/statics': {
     enable: true,
-    package: '@egglib/statics-webpack',
+    package: '@egglib/statics-vite',
   },
   '@egglib/di': {
     enable: true,
   },
   '@egglib/test1': {
-    enable: true,
+    enable: false,
   },
   '@egglib/test2': {
+    enable: false,
+  },
+  '@egglib/test3': {
     enable: true,
   },
 };
