@@ -1,7 +1,7 @@
 'use strict';
 
 const path = require('path');
-const { createServer, loadConfigFromFile } = require('vite');
+const { createServer, loadConfigFromFile, mergeConfig } = require('vite');
 const fs = require('fs');
 
 const serviceToken = Symbol('serviceToken');
@@ -117,15 +117,17 @@ module.exports = {
             return;
           }
 
-          this._service[key] = await createServer({
-            ...viteConfig,
-            mode: 'development',
-            root: config.rootPath,
-            base: `/${config.name}/`,
-            server: {
-              middlewareMode: true,
-            },
-          });
+          this._service[key] = await createServer(
+            mergeConfig(viteConfig, {
+              mode: 'development',
+              root: config.rootPath,
+              base: `/${config.name}/`,
+              server: {
+                middlewareMode: true,
+                cors: false,
+              },
+            }),
+          );
         }
       }),
     );
