@@ -28,7 +28,7 @@
     "egg-view-nunjucks": "^2.3.0"
   },
   "devDependencies": {
-    "vite": "^2.7.10"
+    "vite": "^2.7.13"
   },
   "eggPlugin": {
     "name": "@egglib/statics",

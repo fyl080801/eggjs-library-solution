@@ -20,8 +20,8 @@
   },
   "dependencies": {
     "@egglib/di": "^0.0.0",
-    "@vue/composition-api": "^1.4.3",
-    "core-js": "^3.20.2",
+    "@vue/composition-api": "^1.4.4",
+    "core-js": "^3.20.3",
     "seajs": "^3.0.3",
     "systemjs": "^6.11.0",
     "typedi": "^0.10.0",
