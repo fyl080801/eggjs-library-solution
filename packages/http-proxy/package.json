@@ -1,0 +1,26 @@
+{
+  "name": "@egglib/http-proxy",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "fengyuanliang3 <--show-origin>",
+  "homepage": "https://github.com/fyl080801/eggjs-library-solution#readme",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fyl080801/eggjs-library-solution.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fyl080801/eggjs-library-solution/issues"
+  },
+  "dependencies": {
+    "egg-path-matching": "^1.0.1",
+    "http-proxy-middleware": "^2.0.2",
+    "koa2-connect": "^1.0.2"
+  },
+  "eggPlugin": {
+    "name": "@egglib/http-proxy"
+  }
+}

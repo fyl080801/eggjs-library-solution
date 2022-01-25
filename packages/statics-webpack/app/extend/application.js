@@ -57,7 +57,7 @@ module.exports = {
 
     if (!client.type || client.type === 'dist') {
       this.statics[name] = path.resolve(dirname, client.dir || dir || 'dist');
-    } else if (client.type === 'webpack') {
+    } else if (client.type === 'dev') {
       const Service = require('@vue/cli-service');
       const ins = new Service(dirname);
 
@@ -90,7 +90,7 @@ module.exports = {
       if (!client.type || client.type === 'dist') {
         const config = this.statics[name];
         await ctx.render(path.resolve(config, view), data);
-      } else if (client.type === 'webpack') {
+      } else if (client.type === 'dev') {
         const config = this.webpackConfigs[name];
 
         const viewUrl = `${ctx.request.protocol}://${path.join(
