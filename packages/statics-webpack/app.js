@@ -3,7 +3,7 @@
 module.exports = (app) => {
   const { clients = {} } = app.config.statics || {};
 
-  if (Object.keys(clients).find((key) => clients[key].type === 'webpack')) {
+  if (Object.keys(clients).find((key) => clients[key].type === 'dev')) {
     app.config.coreMiddleware.push('webpack');
   }
 
