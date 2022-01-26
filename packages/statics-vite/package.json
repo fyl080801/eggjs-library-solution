@@ -1,6 +1,6 @@
 {
   "name": "@egglib/statics-vite",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A eggjs plugin use to integration vite dev server",
   "author": "fengyuanliang3 <--show-origin>",
   "homepage": "https://github.com/fyl080801/eggjs-library-solution#readme",
