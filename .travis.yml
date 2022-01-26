@@ -1,10 +1,11 @@
+
 language: node_js
 node_js:
   - '12'
 before_install:
   - npm i npminstall -g
 install:
-  - yarn
+  - npminstall
 script:
   - npm run ci
 after_script:

@@ -103,7 +103,7 @@ module.exports = {
           };
 
     await Promise.all(
-      Object.keys(this.viteConfigs).map(async (key) => {
+      Object.keys(this.viteConfigs).map(async (key, index) => {
         if (!this._service[key]) {
           const config = this.viteConfigs[key];
 
@@ -117,6 +117,8 @@ module.exports = {
             return;
           }
 
+          const wsPort = 24679 + index;
+
           this._service[key] = await createServer(
             mergeConfig(viteConfig, {
               mode: 'development',
@@ -125,6 +127,10 @@ module.exports = {
               server: {
                 middlewareMode: true,
                 cors: false,
+                hmr: {
+                  port: wsPort,
+                  clientPort: wsPort,
+                },
               },
             }),
           );

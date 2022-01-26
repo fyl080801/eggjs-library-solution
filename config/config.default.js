@@ -25,8 +25,8 @@ module.exports = (appInfo) => {
   config.development = {
     overrideDefault: true,
     overrideIgnore: true,
-    watchDirs: ['app', 'config', 'packages', 'app.js', 'agent.js'],
-    ignoreDirs: ['src/**/*', '.cache/**/*'],
+    watchDirs: ['app', 'config', 'app.js', 'agent.js'],
+    ignoreDirs: ['src/**/*', '.cache/**/*', 'packages/test3/src/**/*'],
   };
 
   config.cluster = {

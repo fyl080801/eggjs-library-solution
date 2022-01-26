@@ -1,3 +1,3 @@
 <template>
-  <div>test4 --- adsadsvvvv</div>
+  <div>app4</div>
 </template>
