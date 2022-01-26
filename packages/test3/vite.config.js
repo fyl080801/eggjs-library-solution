@@ -5,7 +5,7 @@ import { createVuePlugin } from 'vite-plugin-vue2';
 import { name } from './package.json';
 
 export default defineConfig({
-  base: `${name}`,
+  base: `/${name}/`,
   plugins: [
     legacy({
       targets: ['defaults', 'not IE 11'],

@@ -18,9 +18,6 @@ module.exports = {
     enable: true,
     package: '@egglib/statics-vite',
   },
-  '@egglib/di': {
-    enable: true,
-  },
   '@egglib/test1': {
     enable: false,
   },

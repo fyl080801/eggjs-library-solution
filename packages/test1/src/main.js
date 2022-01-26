@@ -2,7 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import CompositionApi from '@vue/composition-api';
 import { plugins } from './plugins';
-import { useServiceProvider } from '@egglib/di';
+// import { useServiceProvider } from '@egglib/di';
 
 Vue.config.productionTip = false;
 
@@ -13,12 +13,12 @@ const paths = ['@egglib/test2'];
 Promise.all(
   plugins.filter((p) => paths.includes(p.name)).map((p) => p.importer()),
 ).then((modules) => {
-  modules.forEach(
-    (m) =>
-      m.default &&
-      typeof m.default === 'function' &&
-      m.default({ useServiceProvider }),
-  );
+  // modules.forEach(
+  //   (m) =>
+  //     m.default &&
+  //     typeof m.default === 'function' &&
+  //     m.default({ useServiceProvider }),
+  // );
 
   new Vue({
     render: (h) => h(App),
