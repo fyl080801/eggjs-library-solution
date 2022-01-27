@@ -7,6 +7,7 @@ const net = require('net');
 const os = require('os');
 
 const serviceToken = Symbol('serviceToken');
+const serviceInitToken = Symbol('Application#serviceInitToken');
 
 const VITE = Symbol('Application#vite');
 const STATICS = Symbol('Application#statcis');
@@ -98,6 +99,23 @@ const createPortDiscover = () => {
   };
 };
 
+const createMutilPortDiscover = (from, count) => {
+  let wsPort = from;
+
+  const discover = createPortDiscover();
+
+  return async () => {
+    const results = [];
+
+    for (let i = 0; i < count; i++) {
+      wsPort = await discover(wsPort + 1);
+      results.push(wsPort);
+    }
+
+    return results;
+  };
+};
+
 module.exports = {
   get viteConfigs() {
     if (!this[VITE]) {
@@ -113,12 +131,19 @@ module.exports = {
     return this[STATICS];
   },
 
-  get _service() {
+  get _viteService() {
     if (!this[serviceToken]) {
       this[serviceToken] = {};
     }
 
     return this[serviceToken];
+  },
+
+  get _viteInit() {
+    return this[serviceInitToken];
+  },
+  set _viteInit(value) {
+    this[serviceInitToken] = value;
   },
 
   addPageConfig(name, dir) {
@@ -141,6 +166,52 @@ module.exports = {
   },
 
   async getServer(currentCtx) {
+    if (!this._viteInit) {
+      // 服务可能很快，所以这里用同步方式获得多个可用端口用于hmr服务
+      const wsPorts = await createMutilPortDiscover(
+        24678,
+        Object.keys(this.viteConfigs).length,
+      )();
+
+      console.log(wsPorts);
+
+      await Promise.all(
+        Object.keys(this.viteConfigs).map(async (key, index) => {
+          if (!this._viteService[key]) {
+            const config = this.viteConfigs[key];
+
+            if (!config) {
+              return;
+            }
+
+            const viteConfig = await loadConfigFromFile({}, config.configFile);
+
+            if (!viteConfig) {
+              return;
+            }
+
+            this._viteService[key] = await createServer(
+              mergeConfig(viteConfig, {
+                mode: 'development',
+                root: config.rootPath,
+                base: `/${config.name}/`,
+                server: {
+                  middlewareMode: true,
+                  cors: false,
+                  hmr: {
+                    port: wsPorts[index],
+                    clientPort: wsPorts[index],
+                  },
+                },
+              }),
+            );
+          }
+        }),
+      );
+
+      this._viteInit = true;
+    }
+
     const { matcher } = this.config.statics || {};
 
     const staticsMatcher =
@@ -160,47 +231,7 @@ module.exports = {
             return key || this.config.statics.default;
           };
 
-    const getWsPort = createPortDiscover();
-
-    let wsPort = 24678;
-
-    await Promise.all(
-      Object.keys(this.viteConfigs).map(async (key, index) => {
-        if (!this._service[key]) {
-          const config = this.viteConfigs[key];
-
-          if (!config) {
-            return;
-          }
-
-          const viteConfig = await loadConfigFromFile({}, config.configFile);
-
-          if (!viteConfig) {
-            return;
-          }
-
-          wsPort = await getWsPort(wsPort + 1);
-
-          this._service[key] = await createServer(
-            mergeConfig(viteConfig, {
-              mode: 'development',
-              root: config.rootPath,
-              base: `/${config.name}/`,
-              server: {
-                middlewareMode: true,
-                cors: false,
-                hmr: {
-                  port: wsPort,
-                  clientPort: wsPort,
-                },
-              },
-            }),
-          );
-        }
-      }),
-    );
-
-    return this._service[
+    return this._viteService[
       typeof currentCtx === 'string' ? currentCtx : staticsMatcher(currentCtx)
     ];
   },
