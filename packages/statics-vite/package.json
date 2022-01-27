@@ -1,6 +1,6 @@
 {
   "name": "@egglib/statics-vite",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "A eggjs plugin use to integration vite dev server",
   "author": "fengyuanliang3 <--show-origin>",
   "homepage": "https://github.com/fyl080801/eggjs-library-solution#readme",
@@ -24,10 +24,8 @@
   "bugs": {
     "url": "https://github.com/fyl080801/eggjs-library-solution/issues"
   },
-  "dependencies": {
-    "egg-view-nunjucks": "^2.3.0"
-  },
-  "devDependencies": {
+  "peerDependencies": {
+    "egg-view-nunjucks": "^2.3.0",
     "vite": "^2.7.13"
   },
   "eggPlugin": {

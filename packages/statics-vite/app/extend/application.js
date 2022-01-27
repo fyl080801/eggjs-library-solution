@@ -179,7 +179,7 @@ module.exports = {
             return;
           }
 
-          wsPort = await getWsPort(wsPort);
+          wsPort = await getWsPort(wsPort + 1);
 
           this._service[key] = await createServer(
             mergeConfig(viteConfig, {
