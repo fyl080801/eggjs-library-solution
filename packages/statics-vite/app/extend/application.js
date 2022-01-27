@@ -173,8 +173,6 @@ module.exports = {
         Object.keys(this.viteConfigs).length,
       )();
 
-      console.log(wsPorts);
-
       await Promise.all(
         Object.keys(this.viteConfigs).map(async (key, index) => {
           if (!this._viteService[key]) {
