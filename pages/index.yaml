@@ -1,0 +1,7 @@
+fields:
+  - type: h1
+    domProps:
+      innerText: aaaaa
+  - type: p
+    domProps:
+      innerText: content

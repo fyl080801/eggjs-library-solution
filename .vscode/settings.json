@@ -1,8 +1,11 @@
 {
-    "cSpell.words": [
-        "eggjs",
-        "egglib",
-        "prebuild",
-        "typedi"
-    ]
+  "cSpell.words": ["eggjs", "egglib", "prebuild", "typedi"],
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true
+  }
 }

@@ -1,0 +1,8 @@
+fields:
+  - type: p
+    domProps:
+      innerText: transed
+
+  - type: p
+    domProps:
+      innerText: $:params.id

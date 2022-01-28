@@ -2,31 +2,23 @@
 
 'use strict';
 
-/**
- * @param {Egg.EggAppInfo} appInfo app info
- */
 module.exports = (appInfo) => {
-  /**
-   * built-in config
-   * @type {Egg.EggAppConfig}
-   **/
   const config = (exports = {});
 
-  // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1636560035989_1239';
+
+  config.development = {
+    overrideDefault: true,
+    overrideIgnore: true,
+    watchDirs: ['app', 'config', 'app.js', 'agent.js', 'packages'],
+    ignoreDirs: ['node_modules', 'src/**/*', 'packages/render/src/**/*'],
+  };
 
   config.view = {
     defaultViewEngine: 'nunjucks',
     mapping: {
       '.html': 'nunjucks',
     },
-  };
-
-  config.development = {
-    overrideDefault: true,
-    overrideIgnore: true,
-    watchDirs: ['app', 'config', 'app.js', 'agent.js'],
-    ignoreDirs: ['src/**/*', '.cache/**/*', 'packages/test3/src/**/*'],
   };
 
   config.cluster = {
@@ -36,13 +28,9 @@ module.exports = (appInfo) => {
     },
   };
 
-  // add your middleware config here
   config.middleware = [];
 
-  // add your user config here
-  const userConfig = {
-    // myAppName: 'egg',
-  };
+  const userConfig = {};
 
   return {
     ...config,

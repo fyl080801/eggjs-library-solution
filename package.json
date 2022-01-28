@@ -31,7 +31,8 @@
     "node": ">=12.0.0"
   },
   "scripts": {
-    "prebuild": "lerna run clean --parallel && rimraf dist",
+    "prebuild": "npm run clean",
+    "clean": "lerna run clean --parallel && rimraf dist",
     "build": "lerna run build",
     "start": "egg-scripts start --daemon --title=egg-server-eggjs-test1",
     "stop": "egg-scripts stop --title=egg-server-eggjs-test1",

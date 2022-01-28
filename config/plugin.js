@@ -1,6 +1,5 @@
 'use strict';
 
-/** @type Egg.EggPlugin */
 module.exports = {
   // had enabled by egg
   // static: {
@@ -18,16 +17,7 @@ module.exports = {
     enable: true,
     package: '@egglib/statics-vite',
   },
-  '@egglib/test1': {
-    enable: false,
-  },
-  '@egglib/test2': {
-    enable: false,
-  },
-  '@egglib/test3': {
-    enable: true,
-  },
-  '@egglib/test4': {
+  '@egglib/render': {
     enable: true,
   },
 };
