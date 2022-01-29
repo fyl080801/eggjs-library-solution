@@ -1,6 +1,6 @@
 {
   "name": "@egglib/statics-webpack",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "> TODO: description",
   "author": "fyl080801 <fyl080801@hotmail.com>",
   "homepage": "",
@@ -12,10 +12,10 @@
   "scripts": {},
   "dependencies": {
     "@vue/cli-service": "^4.5.15",
-    "koa-webpack": "^6.0.0",
-    "webpack": "^4.46.0",
     "egg-request-curl": "^1.1.0",
-    "egg-view-nunjucks": "^2.3.0"
+    "egg-view-nunjucks": "^2.3.0",
+    "koa-webpack": "^6.0.0",
+    "webpack": "^4.46.0"
   },
   "eggPlugin": {
     "name": "@egglib/statics",
