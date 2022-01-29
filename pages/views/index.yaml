@@ -1,0 +1,9 @@
+fields:
+  - type: h1
+    domProps:
+      innerText: aaaaaa
+  - type: button
+    domProps:
+      innerText: back
+    on:
+      click: $:()=>BACK()

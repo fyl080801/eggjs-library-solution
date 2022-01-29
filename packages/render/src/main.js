@@ -1,5 +1,11 @@
 import Vue from 'vue';
-import VueCompositionAPI, { h, onMounted, ref } from '@vue/composition-api';
+import VueCompositionAPI, {
+  h,
+  nextTick,
+  onMounted,
+  ref,
+  watch,
+} from '@vue/composition-api';
 import JRender, { useGlobalRender } from '@jrender-legacy/core';
 import JRenderExtends from '@jrender-legacy/extends';
 import { LibExtends } from './components';
@@ -13,9 +19,9 @@ useGlobalRender(LibExtends);
 
 new Vue({
   setup() {
-    const config = ref({
-      fields: {},
-    });
+    const config = ref({});
+
+    const updating = ref(false);
 
     const load = (path) => {
       request({ url: '/api/v1/render', params: { path } }).then((response) => {
@@ -28,38 +34,52 @@ new Vue({
 
       return function () {
         const handler = historyEvent.apply(this, arguments);
-        const e = new Event('statechanged');
-        e.arguments = arguments;
-        window.dispatchEvent(e);
+        window.dispatchEvent(new Event('statechanged'));
         return handler;
       };
+    };
+
+    const update = () => {
+      load(window.location.pathname);
     };
 
     history.pushState = buildStateEvent('pushState');
 
     history.replaceState = buildStateEvent('replaceState');
 
-    window.addEventListener('statechanged', (e) => {
-      const [state, title, path] = e.arguments;
+    window.addEventListener('statechanged', update, false);
 
-      load(path);
-    });
+    window.addEventListener('popstate', update, false);
+
+    watch(
+      () => config.value,
+      () => {
+        updating.value = true;
+
+        nextTick(() => {
+          updating.value = false;
+        });
+      },
+    );
 
     onMounted(() => {
       load(window.location.pathname);
     });
 
     return () =>
+      !updating.value &&
       h(JRender, {
         props: config.value,
         on: {
           setup: ({ addFunction }) => {
-            addFunction('PUSH_TO', (path) => {
-              history.pushState({}, null, path);
+            addFunction('TO', (path, replace) => {
+              !replace
+                ? history.pushState({}, null, path)
+                : history.replaceState({}, null, path);
             });
 
-            addFunction('REPLACE_TO', (path) => {
-              history.replaceState({}, null, path);
+            addFunction('BACK', () => {
+              history.back();
             });
           },
         },

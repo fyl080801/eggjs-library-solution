@@ -5,3 +5,8 @@ fields:
   - type: p
     domProps:
       innerText: content
+  - type: button
+    domProps:
+      innerText: click
+    on:
+      click: $:()=>TO('/views/index')
