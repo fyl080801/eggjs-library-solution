@@ -11,6 +11,6 @@ run/
 *.un~
 typings/
 .nyc_output/
-
+lerna-debug.log
 dist
 node_modules
