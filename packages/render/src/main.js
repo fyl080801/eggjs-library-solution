@@ -13,7 +13,9 @@ useGlobalRender(LibExtends);
 
 new Vue({
   setup() {
-    const config = ref({});
+    const config = ref({
+      fields: {},
+    });
 
     const load = (path) => {
       request({ url: '/api/v1/render', params: { path } }).then((response) => {
