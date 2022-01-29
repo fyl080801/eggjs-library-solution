@@ -49,7 +49,6 @@
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
     "autod": "autod",
-    "publish": "lerna publish",
     "prepack": "yarn run build",
     "postinstall": "husky install",
     "postpublish": "yarn run clean",
