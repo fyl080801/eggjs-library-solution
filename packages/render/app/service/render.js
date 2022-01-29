@@ -50,11 +50,26 @@ const getAll = async (dir) => {
 
 class RenderService extends Service {
   async getRenderPage(path) {
+    let { configDir } = this.app.config.render || {};
+
+    configDir = configDir || resolve(process.cwd(), 'renders');
+
+    if (!this.app.renderConfig) {
+      this.app.renderConfig = {};
+
+      const configFile = resolve(configDir, '.render');
+
+      const haveConfig = fs.existsSync(configFile);
+
+      if (haveConfig) {
+        try {
+          const config = jsyaml.load(await fs.promises.readFile(configFile));
+          this.app.renderConfig = Object.assign(this.app.renderConfig, config);
+        } catch {}
+      }
+    }
+
     if (!this.app.renders) {
-      let { configDir } = this.app.config.render || {};
-
-      configDir = configDir || resolve(process.cwd(), 'renders');
-
       const all = await getAll(configDir);
 
       this.app.renders = all.map((item) => {
@@ -74,30 +89,12 @@ class RenderService extends Service {
           },
         };
       });
-
-      //   let config = {};
-
-      //   if (fs.existsSync(resolve(configDir, './render'))) {
-      //     const config = await fs.promises.readFile(
-      //       resolve(configDir, './render'),
-      //     );
-
-      //     try {
-      //       config = jsyaml.load(config);
-      //     } catch {}
-      //   }
-
-      //   this.app.renders.push({
-      //     render: async () => {
-      //       return await fs.promises.readFile(resolve(configDir, item), 'utf-8');
-      //     },
-      //   });
     }
 
     const matched = this.app.renders.find((item) => item.parser.match(path));
 
-    if (matched) {
-      try {
+    try {
+      if (matched) {
         const pageConfig = jsyaml.load(await matched.reader());
 
         const matchConfig = matched.parser.match(path);
@@ -109,11 +106,25 @@ class RenderService extends Service {
         };
 
         return pageConfig;
-      } catch (e) {
-        console.log(e);
-        return {};
+      } else if (this.app.renderConfig.default) {
+        const defaultFilePath = join(
+          configDir,
+          `${this.app.renderConfig.default.replace(extRegx, '')}.yaml`,
+        );
+
+        const defaultFile = await fs.promises.readFile(
+          defaultFilePath,
+          'utf-8',
+        );
+
+        return jsyaml.load(defaultFile);
       }
+    } catch (e) {
+      console.log(e);
+      return {};
     }
+
+    return {};
   }
 }
 
