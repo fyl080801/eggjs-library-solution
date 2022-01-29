@@ -6,6 +6,8 @@
   "workspaces": [
     "packages/*"
   ],
+  "author": "fyl080801",
+  "license": "MIT",
   "egg": {
     "declarations": false
   },
@@ -16,6 +18,7 @@
   "devDependencies": {
     "autod": "^3.1.2",
     "autod-egg": "^1.1.0",
+    "cz-conventional-changelog": "^3.3.0",
     "egg-bin": "^4.17.0",
     "egg-ci": "^1.19.0",
     "egg-mock": "^4.2.0",
@@ -23,7 +26,9 @@
     "eslint-config-egg": "^9.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
     "lerna": "^4.0.0",
+    "lint-staged": "^12.3.2",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2"
   },
@@ -43,15 +48,32 @@
     "cov": "egg-bin cov",
     "lint": "eslint .",
     "ci": "npm run lint && npm run cov",
-    "autod": "autod"
+    "autod": "autod",
+    "publish": "lerna publish",
+    "prepack": "yarn run build",
+    "postinstall": "husky install",
+    "postpublish": "yarn run clean",
+    "commit": "git add . && git status && git-cz",
+    "lint-staged": "lint-staged"
   },
   "ci": {
     "version": "12"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/fyl080801/eggjs-library-solution.git"
   },
-  "author": "",
-  "license": "MIT"
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.(vue|tsx|js|ts)": [
+      "prettier --write"
+    ]
+  }
 }
