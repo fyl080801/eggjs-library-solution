@@ -1,7 +1,9 @@
 {
   "extends": ["eslint-config-egg", "plugin:prettier/recommended"],
   "parserOptions": { "sourceType": "module" },
+  "globals": { "window": true },
   "rules": {
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+    "no-empty": "off"
   }
 }

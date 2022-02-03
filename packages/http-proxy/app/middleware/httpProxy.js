@@ -1,5 +1,3 @@
-'use strict';
-
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const koa2connect = require('koa2-connect');

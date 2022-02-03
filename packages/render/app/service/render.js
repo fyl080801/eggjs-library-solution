@@ -1,5 +1,3 @@
-'use strict';
-
 const { Service } = require('egg');
 const fs = require('fs');
 const { resolve, join } = require('path');

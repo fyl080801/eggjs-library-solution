@@ -1,6 +1,6 @@
 const path = require('path');
 
-const WEBPACK = Symbol('Application#webpack');
+const VUECLI = Symbol('Application#vuecli');
 const STATICS = Symbol('Application#statcis');
 
 const getCallerFile = function () {
@@ -35,11 +35,11 @@ const getCallerFile = function () {
 };
 
 module.exports = {
-  get webpackConfigs() {
-    if (!this[WEBPACK]) {
-      this[WEBPACK] = {};
+  get cliConfigs() {
+    if (!this[VUECLI]) {
+      this[VUECLI] = {};
     }
-    return this[WEBPACK];
+    return this[VUECLI];
   },
   get statics() {
     if (!this[STATICS]) {
@@ -55,18 +55,21 @@ module.exports = {
     if (!client.type || client.type === 'dist') {
       this.statics[name] = path.resolve(dirname, client.dir || dir || 'dist');
     } else if (client.type === 'dev') {
-      // const Service = require('@vue/cli-service');
-      // const ins = new Service(dirname);
-      // ins.init(process.env.NODE_ENV);
-      // const config = ins.resolveWebpackConfig();
-      // this.webpackConfigs[name] = {
-      //   config,
-      //   devMiddleware: {
-      //     publicPath: config.output.publicPath,
-      //     serverSideRender: true,
-      //   },
-      //   hotClient: {},
-      // };
+      const Service = require('@vue/cli-service');
+      const ins = new Service(dirname);
+
+      ins.init(process.env.NODE_ENV);
+
+      const config = ins.resolveWebpackConfig();
+
+      this.cliConfigs[name] = {
+        config,
+        devMiddleware: {
+          publicPath: config.output.publicPath,
+          serverSideRender: true,
+        },
+        hotClient: {},
+      };
     }
   },
   viewInject(name, view) {
@@ -85,7 +88,7 @@ module.exports = {
         const config = this.statics[name];
         await ctx.render(path.resolve(config, view), data);
       } else if (client.type === 'dev') {
-        const config = this.webpackConfigs[name];
+        const config = this.cliConfigs[name];
 
         const viewUrl = `${ctx.request.protocol}://${path.join(
           ctx.request.host,

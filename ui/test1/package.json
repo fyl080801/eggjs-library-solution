@@ -1,0 +1,10 @@
+{
+  "name": "@egglib/test1",
+  "version": "0.0.0",
+  "eggPlugin": {
+    "name": "@egglib/test1",
+    "dep": [
+      "@egglib/statics"
+    ]
+  }
+}

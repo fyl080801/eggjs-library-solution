@@ -30,11 +30,11 @@ new Vue({
     };
 
     const buildStateEvent = (type) => {
-      const historyEvent = history[type];
+      const historyEvent = window.history[type];
 
       return function () {
         const handler = historyEvent.apply(this, arguments);
-        window.dispatchEvent(new Event('statechanged'));
+        window.dispatchEvent(new window.Event('statechanged'));
         return handler;
       };
     };
@@ -43,9 +43,9 @@ new Vue({
       load(window.location.pathname);
     };
 
-    history.pushState = buildStateEvent('pushState');
+    window.history.pushState = buildStateEvent('pushState');
 
-    history.replaceState = buildStateEvent('replaceState');
+    window.history.replaceState = buildStateEvent('replaceState');
 
     window.addEventListener('statechanged', update, false);
 
@@ -74,12 +74,12 @@ new Vue({
           setup: ({ addFunction }) => {
             addFunction('TO', (path, replace) => {
               !replace
-                ? history.pushState({}, null, path)
-                : history.replaceState({}, null, path);
+                ? window.history.pushState({}, null, path)
+                : window.history.replaceState({}, null, path);
             });
 
             addFunction('BACK', () => {
-              history.back();
+              window.history.back();
             });
           },
         },

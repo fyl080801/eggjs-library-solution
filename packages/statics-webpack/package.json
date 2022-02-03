@@ -10,12 +10,10 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {},
-  "dependencies": {
-    "@vue/cli-service": "^4.5.15",
+  "peerDependencies": {
     "egg-request-curl": "^1.1.0",
     "egg-view-nunjucks": "^2.3.0",
-    "koa-webpack": "^6.0.0",
-    "webpack": "^4.46.0"
+    "webpack": "^5.68.0"
   },
   "eggPlugin": {
     "name": "@egglib/statics",

@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = {
   // had enabled by egg
   // static: {
@@ -15,9 +13,9 @@ module.exports = {
   },
   '@egglib/statics': {
     enable: true,
-    package: '@egglib/statics-vite',
+    package: '@egglib/statics-webpack',
   },
   '@egglib/render': {
-    enable: true,
+    enable: false,
   },
 };

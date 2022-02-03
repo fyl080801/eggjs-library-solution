@@ -1,5 +1,3 @@
-'use strict';
-
 const renderToken = Symbol('Application#render');
 const renderConfigToken = Symbol('Application#renderConfig');
 

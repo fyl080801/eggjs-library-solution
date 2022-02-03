@@ -1,5 +1,3 @@
-'use strict';
-
 const path = require('path');
 const { createServer, loadConfigFromFile, mergeConfig } = require('vite');
 const fs = require('fs');
@@ -43,7 +41,21 @@ const getCallerFile = function () {
   return path.dirname(filename);
 };
 
-const createPortDiscover = () => {
+const getLocalHosts = () => {
+  const interfaces = os.networkInterfaces();
+
+  const results = new Set([undefined, '0.0.0.0']);
+
+  for (const inter of Object.values(interfaces)) {
+    for (const config of inter) {
+      results.add(config.address);
+    }
+  }
+
+  return results;
+};
+
+const createPortDiscover = (hosts) => {
   const checkAvailablePort = (port) => {
     return new Promise((resolve, reject) => {
       const server = net.createServer();
@@ -62,20 +74,6 @@ const createPortDiscover = () => {
     });
   };
 
-  const getLocalHosts = () => {
-    const interfaces = os.networkInterfaces();
-
-    const results = new Set([undefined, '0.0.0.0']);
-
-    for (const inter of Object.values(interfaces)) {
-      for (const config of inter) {
-        results.add(config.address);
-      }
-    }
-
-    return results;
-  };
-
   const getPort = async (from, callback) => {
     const result = await checkAvailablePort(from)
       .then((e) => e)
@@ -87,8 +85,6 @@ const createPortDiscover = () => {
       callback(from);
     }
   };
-
-  const hosts = getLocalHosts();
 
   return async (start) => {
     return new Promise((resolve) => {
@@ -102,7 +98,7 @@ const createPortDiscover = () => {
 const createMutilPortDiscover = (from, count) => {
   let wsPort = from;
 
-  const discover = createPortDiscover();
+  const discover = createPortDiscover(getLocalHosts());
 
   return async () => {
     const results = [];

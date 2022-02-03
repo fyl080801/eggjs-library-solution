@@ -1,5 +1,3 @@
-'use strict';
-
 function makeInjectedResponse(ctx, end) {
   const res = ctx.res;
 
