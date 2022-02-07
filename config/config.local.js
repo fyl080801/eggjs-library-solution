@@ -13,7 +13,7 @@ const path = require('path');
 exports.statics = {
   default: '@egglib/test1',
   clients: {
-    '@egglib/render': {
+    '@egglib/test1': {
       type: 'dev',
     },
   },
