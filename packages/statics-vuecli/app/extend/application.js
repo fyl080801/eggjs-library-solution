@@ -1,7 +1,4 @@
-'use strict';
-
 const path = require('path');
-const fs = require('fs');
 
 const WEBPACK = Symbol('Application#webpack');
 const STATICS = Symbol('Application#statcis');

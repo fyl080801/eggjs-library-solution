@@ -1,5 +1,3 @@
-'use strict';
-
 const koaWebpack = require('koa-webpack');
 
 module.exports = (options, app) => {
