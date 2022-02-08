@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "egg-path-matching": "^1.0.1",
-    "http-proxy-middleware": "^2.0.2",
+    "http-proxy-middleware": "^2.0.3",
     "koa2-connect": "^1.0.2"
   },
   "eggPlugin": {

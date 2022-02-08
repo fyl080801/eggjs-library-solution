@@ -553,20 +553,20 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@jrender-legacy/core@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@jrender-legacy/core/-/core-1.0.2.tgz#2d30613c7723660bc807f11b576f392d2d6208f6"
-  integrity sha512-Tkg64xqYn2TqvzIUgWe/kYQdaJpzXdZ2tKbJ53ys11xJu4a3ybD9pxszt/8nuq4VfMeBJqNmpj6zS7oaLreAiQ==
+"@jrender-legacy/core@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@jrender-legacy/core/-/core-1.0.4.tgz#77affc399fca24dc61424a8388879dca928ff125"
+  integrity sha512-veEAoUI5qMuS/HhmLyKKQ5jQ/j3172pAX7pwKq9+j4I60UVr6oV0/sEb/j5Ix6C/VwuRu3vVNI+PzQ3/KO+REg==
   dependencies:
-    core-js "^3.20.3"
+    core-js "^3.21.0"
 
-"@jrender-legacy/extends@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@jrender-legacy/extends/-/extends-1.0.3.tgz#dacf29ef203104f226586face8a2342b09f517a7"
-  integrity sha512-ijQU7s1BH9/SoAde3o5rlhmcK30KBL+f/gCaLzpKEvOM7JVsaoEWug7UOxpq1EIc8Ghv5d57nGtfItEC4cpulw==
+"@jrender-legacy/extends@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@jrender-legacy/extends/-/extends-1.0.5.tgz#7401874f9984b730d0aa4f93663be1695a2a9ba0"
+  integrity sha512-Yt8m3HZLxkwfkWcG3MSaBVQowAGQVH7nzbCp79IN4Fmw3Il/qOrfMumqRltTwOFogkkBKGVpvrmKQ5iQUir9mA==
   dependencies:
-    "@jrender-legacy/core" "^1.0.2"
-    core-js "^3.20.3"
+    "@jrender-legacy/core" "^1.0.4"
+    core-js "^3.21.0"
 
 "@lerna/add@4.0.0":
   version "4.0.0"
@@ -2113,10 +2113,10 @@
   optionalDependencies:
     prettier "^1.18.2 || ^2.0.0"
 
-"@vue/composition-api@^1.4.5":
-  version "1.4.5"
-  resolved "https://registry.yarnpkg.com/@vue/composition-api/-/composition-api-1.4.5.tgz#a15f5407708a6566ade81965476218dfaa4faa29"
-  integrity sha512-2Esgcc0EGBqyck4b/yrP2VnGmMr6cPYAE4nF3StIzP8+umNAbRZqBJDc6AhE58whPRt3lHAPf83eppgW7a2dUg==
+"@vue/composition-api@^1.4.6":
+  version "1.4.6"
+  resolved "https://registry.yarnpkg.com/@vue/composition-api/-/composition-api-1.4.6.tgz#886c35221cd7c6f55272543a121240e8d3a1306c"
+  integrity sha512-UP359OJ0G0Zli603/i9fhXFmNtZUSrypSFyqClMxizp8ezlaMK2GCmHgy3qyrRnO/xjcDAx09vvXPwNFtxHPtQ==
 
 "@vue/preload-webpack-plugin@^1.1.0":
   version "1.1.2"
@@ -5019,10 +5019,15 @@ core-js@^2.0.0, core-js@^2.4.0, core-js@^2.5.0:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
   integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
 
-core-js@^3.19.1, core-js@^3.20.3:
+core-js@^3.19.1:
   version "3.20.3"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.20.3.tgz#c710d0a676e684522f3db4ee84e5e18a9d11d69a"
   integrity sha512-vVl8j8ph6tRS3B8qir40H7yw7voy17xL0piAjlbBUsH7WIfzoedL/ZOr1OV9FyZQLWXsayOJyV4tnRyXR85/ag==
+
+core-js@^3.21.0:
+  version "3.21.0"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.21.0.tgz#f479dbfc3dffb035a0827602dd056839a774aa71"
+  integrity sha512-YUdI3fFu4TF/2WykQ2xzSiTQdldLB4KVuL9WeAy5XONZYt5Cun/fpQvctoKbCgvPhmzADeesTk/j2Rdx77AcKQ==
 
 core-util-is@1.0.2:
   version "1.0.2"
@@ -8407,10 +8412,10 @@ http-proxy-middleware@^1.0.0:
     is-plain-obj "^3.0.0"
     micromatch "^4.0.2"
 
-http-proxy-middleware@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/http-proxy-middleware/-/http-proxy-middleware-2.0.2.tgz#94d7593790aad6b3de48164f13792262f656c332"
-  integrity sha512-XtmDN5w+vdFTBZaYhdJAbMqn0DP/EhkUaAeo963mojwpKMMbw6nivtFKw07D7DDOH745L5k0VL0P8KRYNEVF/g==
+http-proxy-middleware@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/http-proxy-middleware/-/http-proxy-middleware-2.0.3.tgz#5df04f69a89f530c2284cd71eeaa51ba52243289"
+  integrity sha512-1bloEwnrHMnCoO/Gcwbz7eSVvW50KPES01PecpagI+YLNLci4AcuKJrujW4Mc3sBLpFxMSlsLNHS5Nl/lvrTPA==
   dependencies:
     "@types/http-proxy" "^1.17.8"
     http-proxy "^1.18.1"
@@ -9777,10 +9782,10 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.2.4.tgz#eca284f75d2965079309dc0ad9255abb2ebc1632"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
 
-lint-staged@^12.3.2:
-  version "12.3.2"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-12.3.2.tgz#c87fe59dca475b7d1cb56863c5faa03c145e1446"
-  integrity sha512-gtw4Cbj01SuVSfAOXC6ivd/7VKHTj51yj5xV8TgktFmYNMsZzXuSd5/brqJEA93v63wL7R6iDlunMANOechC0A==
+lint-staged@^12.3.3:
+  version "12.3.3"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-12.3.3.tgz#0a465962fe53baa2b4b9da50801ead49a910e03b"
+  integrity sha512-OqcLsqcPOqzvsfkxjeBpZylgJ3SRG1RYqc9LxC6tkt6tNsq1bNVkAixBwX09f6CobcHswzqVOCBpFR1Fck0+ag==
   dependencies:
     cli-truncate "^3.1.0"
     colorette "^2.0.16"
