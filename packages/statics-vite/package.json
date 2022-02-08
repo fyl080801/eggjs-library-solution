@@ -24,8 +24,10 @@
   "bugs": {
     "url": "https://github.com/fyl080801/eggjs-library-solution/issues"
   },
-  "peerDependencies": {
-    "egg-view-nunjucks": "^2.3.0",
+  "dependencies": {
+    "egg-view-nunjucks": "^2.3.0"
+  },
+  "devDependencies": {
     "vite": "^2.7.13"
   },
   "eggPlugin": {

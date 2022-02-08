@@ -1,20 +1,20 @@
-'use strict';
+'use strict'
 
-const renderToken = Symbol('Application#render');
-const renderConfigToken = Symbol('Application#renderConfig');
+const renderToken = Symbol('Application#render')
+const renderConfigToken = Symbol('Application#renderConfig')
 
 module.exports = {
   get renders() {
-    return this[renderToken];
+    return this[renderToken]
   },
   set renders(value) {
-    this[renderToken] = value;
+    this[renderToken] = value
   },
 
   get renderConfig() {
-    return this[renderConfigToken];
+    return this[renderConfigToken]
   },
   set renderConfig(value) {
-    this[renderConfigToken] = value;
+    this[renderConfigToken] = value
   },
-};
+}

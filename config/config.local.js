@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-const path = require('path');
+const path = require('path')
 
 exports.statics = {
   default: '@egglib/render',
@@ -10,10 +10,10 @@ exports.statics = {
     },
   },
   env: {},
-};
+}
 
 exports.render = {
   homePath: '*',
   renderPath: '/egglib/render',
   configDir: path.resolve(process.cwd(), 'pages'),
-};
+}

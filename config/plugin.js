@@ -1,3 +1,5 @@
+'use strict'
+
 module.exports = {
   // had enabled by egg
   // static: {
@@ -18,4 +20,4 @@ module.exports = {
   '@egglib/render': {
     enable: true,
   },
-};
+}

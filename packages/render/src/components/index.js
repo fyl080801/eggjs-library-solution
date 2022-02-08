@@ -1,1 +1,1 @@
-export * from './JRender';
+export * from './JRender'
