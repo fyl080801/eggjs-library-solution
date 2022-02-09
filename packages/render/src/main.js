@@ -10,79 +10,90 @@ import JRender, { useGlobalRender } from '@jrender-legacy/core'
 import JRenderExtends from '@jrender-legacy/extends'
 import { LibExtends } from './components'
 import { request } from './utils/request'
+import { system } from './utils/app'
+import 'systemjs'
 
-Vue.use(VueCompositionAPI)
-Vue.use(JRender)
+window.Vue = Vue
+window.VueCompositionAPI = VueCompositionAPI
 
-useGlobalRender(JRenderExtends)
-useGlobalRender(LibExtends)
+const config = system ? JSON.parse(system) : []
 
-new Vue({
-  setup() {
-    const config = ref({})
+Promise.all(config.map((item) => window.System.import(item))).then(() => {
+  Vue.use(VueCompositionAPI)
+  Vue.use(JRender)
 
-    const updating = ref(false)
+  useGlobalRender(JRenderExtends)
+  useGlobalRender(LibExtends)
 
-    const load = (path) => {
-      request({ url: '/api/v1/render', params: { path } }).then((response) => {
-        config.value = response.data
-      })
-    }
+  new Vue({
+    setup() {
+      const config = ref({})
 
-    const buildStateEvent = (type) => {
-      const historyEvent = history[type]
+      const updating = ref(false)
 
-      return function () {
-        const handler = historyEvent.apply(this, arguments)
-        window.dispatchEvent(new Event('statechanged'))
-        return handler
-      }
-    }
-
-    const update = () => {
-      load(window.location.pathname)
-    }
-
-    history.pushState = buildStateEvent('pushState')
-
-    history.replaceState = buildStateEvent('replaceState')
-
-    window.addEventListener('statechanged', update, false)
-
-    window.addEventListener('popstate', update, false)
-
-    watch(
-      () => config.value,
-      () => {
-        updating.value = true
-
-        nextTick(() => {
-          updating.value = false
-        })
-      },
-    )
-
-    onMounted(() => {
-      load(window.location.pathname)
-    })
-
-    return () =>
-      !updating.value &&
-      h(JRender, {
-        props: config.value,
-        on: {
-          setup: ({ addFunction }) => {
-            addFunction('TO', (path, replace) => {
-              !replace
-                ? history.pushState({}, null, path)
-                : history.replaceState({}, null, path)
-            })
-
-            addFunction('BACK', () => {
-              history.back()
-            })
+      const load = (path) => {
+        request({ url: '/api/v1/render', params: { path } }).then(
+          (response) => {
+            config.value = response.data
           },
+        )
+      }
+
+      const buildStateEvent = (type) => {
+        const historyEvent = history[type]
+
+        return function () {
+          const handler = historyEvent.apply(this, arguments)
+          window.dispatchEvent(new Event('statechanged'))
+          return handler
+        }
+      }
+
+      const update = () => {
+        load(window.location.pathname)
+      }
+
+      history.pushState = buildStateEvent('pushState')
+
+      history.replaceState = buildStateEvent('replaceState')
+
+      window.addEventListener('statechanged', update, false)
+
+      window.addEventListener('popstate', update, false)
+
+      watch(
+        () => config.value,
+        () => {
+          updating.value = true
+
+          nextTick(() => {
+            updating.value = false
+          })
         },
+      )
+
+      onMounted(() => {
+        load(window.location.pathname)
       })
-  },
-}).$mount('#app')
+
+      return () =>
+        !updating.value &&
+        h(JRender, {
+          props: config.value,
+          on: {
+            setup: ({ addFunction }) => {
+              addFunction('TO', (path, replace) => {
+                !replace
+                  ? history.pushState({}, null, path)
+                  : history.replaceState({}, null, path)
+              })
+
+              addFunction('BACK', () => {
+                history.back()
+              })
+            },
+          },
+        })
+    },
+  }).$mount('#app')
+})

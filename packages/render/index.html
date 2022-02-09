@@ -4,6 +4,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    {% for item in links %}
+    <link rel="stylesheet" href="{{item.href}}" />
+    {% endfor %}
   </head>
   <!-- node 层变量 -->
   <body>
@@ -13,7 +16,7 @@
         Please enable it to continue.
       </strong>
     </noscript>
-    <div id="app" data-prefix="{{prefix}}"></div>
+    <div id="app" data-prefix="{{prefix}}" data-system="{{system}}"></div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

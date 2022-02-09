@@ -8,7 +8,7 @@ module.exports = (app) => {
   const {
     homePath = '*',
     renderPath = '/egglib/render',
-    // external = [],
+    external = [],
   } = app.config.render || {}
 
   app.router.get(
@@ -23,10 +23,23 @@ module.exports = (app) => {
   app.router.get(homePath, app.viewInject(name, 'index.html'), (ctx) => {
     ctx.body = {
       prefix: renderPath,
-      // scripts: external
-      //   .filter((item) => item.type === 'script')
-      //   .map((item) => ({ ...item, module: item.module ? 'module' : '' })),
-      // links: external.filter((item) => item.type === 'link'),
+      scripts: external
+        .filter((item) => item.type === 'script')
+        .map((item) => ({ ...item, module: item.module ? 'module' : '' })),
+      links: external.filter((item) => item.type === 'link'),
+      system: JSON.stringify(
+        external
+          .filter((item) => item.type === 'system')
+          .map((item) => item.src) || [],
+      ),
+      // modules: JSON.stringify(
+      //   external
+      //     .filter((item) => item.type === 'module')
+      //     .reduce((target, item) => {
+      //       target[item.name] = item.src
+      //       return target
+      //     }, {}),
+      // ),
     }
   })
 }
