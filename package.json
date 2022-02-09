@@ -51,6 +51,7 @@
     "autod": "autod",
     "prepack": "yarn run build",
     "postinstall": "husky install",
+    "publish": "lerna publish",
     "postpublish": "yarn run clean",
     "commit": "git add . && git status && git-cz",
     "lint-staged": "lint-staged"
