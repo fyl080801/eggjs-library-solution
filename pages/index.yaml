@@ -10,3 +10,6 @@ fields:
       innerText: click
     on:
       click: $:()=>TO('/views/index')
+  # - type: el-button
+  #   domProps:
+  #     innerText: aaaaa

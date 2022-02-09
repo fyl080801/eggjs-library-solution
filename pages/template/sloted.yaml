@@ -1,0 +1,9 @@
+fields:
+  - type: div
+    style:
+      border: 1px solid blue
+    children:
+      - type: p
+        domProps:
+          innerText: 下面的是slot内容
+      - type: slot

@@ -1,5 +1,4 @@
 import { reactive, nextTick } from '@vue/composition-api'
-import yaml from 'js-yaml'
 import { request } from '../../utils/request'
 
 export const LibExtends = ({ addDataSource, onBeforeBind }) => {
@@ -50,12 +49,12 @@ export const LibExtends = ({ addDataSource, onBeforeBind }) => {
     }
 
     request
-      .get(`/api/v1/path`, { params: { path: field.path } })
+      .get(`/api/v1/render`, { params: { path: field.path } })
       .then((response) => {
         next({
           ...field,
           component: 'j-render',
-          props: yaml.load(response.data),
+          props: response.data,
           children: field.children,
         })
       })

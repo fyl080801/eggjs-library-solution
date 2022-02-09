@@ -1,0 +1,8 @@
+fields:
+  - type: div
+    style:
+      border: 1px solid red
+    children:
+      - type: p
+        domProps:
+          innerText: custom inner

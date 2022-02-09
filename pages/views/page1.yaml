@@ -1,0 +1,12 @@
+fields:
+  - type: h1
+    domProps:
+      innerText: template sample
+  - type: template
+    path: /template/custom
+  - type: template
+    path: /template/sloted
+    children:
+      - type: span
+        domProps:
+          innerText: 加到slot里的内容
