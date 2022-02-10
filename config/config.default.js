@@ -1,5 +1,8 @@
 'use strict'
 
+const fs = require('fs')
+const path = require('path')
+
 module.exports = (appInfo) => {
   const config = (exports = {})
 
@@ -7,9 +10,14 @@ module.exports = (appInfo) => {
 
   config.development = {
     overrideDefault: true,
-    overrideIgnore: true,
-    watchDirs: ['app', 'config', 'app.js', 'agent.js', 'packages'],
-    ignoreDirs: ['node_modules', 'src/**/*', 'packages/render/src/**/*'],
+    overrideIgnore: false,
+    watchDirs: ['app', 'config', 'app.js', 'agent.js', 'packages', 'pages'],
+    ignoreDirs: [
+      'node_modules',
+      ...fs
+        .readdirSync(path.resolve(process.cwd(), 'packages'))
+        .map((dir) => `packages/${dir}/src`),
+    ],
   }
 
   config.view = {

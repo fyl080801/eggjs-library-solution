@@ -10,3 +10,8 @@ fields:
       - type: span
         domProps:
           innerText: 加到slot里的内容
+  - type: button
+    domProps:
+      innerText: go back
+    on:
+      click: $:()=>BACK()

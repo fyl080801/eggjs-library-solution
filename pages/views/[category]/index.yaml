@@ -1,0 +1,9 @@
+fields:
+  - type: h1
+    domProps:
+      innerText: $:`dir param is ${params.category}`
+  - type: button
+    domProps:
+      innerText: go back
+    on:
+      click: $:()=>BACK()

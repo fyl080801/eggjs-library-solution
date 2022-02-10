@@ -1,0 +1,11 @@
+fields:
+  - type: h1
+    domProps:
+      innerText: $:`Name is ${params.name}`
+  - type: el-form
+    children:
+      - type: el-form-item
+        props:
+          label: text1
+        children:
+          - type: el-input

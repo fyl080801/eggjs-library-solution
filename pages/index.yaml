@@ -16,4 +16,14 @@ fields:
         domProps:
           innerText: aaaaa
         on:
-          click: $:()=>alert('success')
+          click: $:()=>TO('/views/page1')
+      - type: el-button
+        domProps:
+          innerText: go sample1
+        on:
+          click: $:()=>TO('/views/samples/aaaaa')
+      - type: el-button
+        domProps:
+          innerText: go sample2
+        on:
+          click: $:()=>TO('/views/category1/index')

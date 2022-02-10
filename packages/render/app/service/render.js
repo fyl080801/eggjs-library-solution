@@ -13,7 +13,7 @@ const paramRegx = /^\[[a-zA-Z]+\]$/g
 const paramContentRegx = /[a-zA-Z]+/g
 
 const tryToParam = (input) => {
-  return paramRegx.test(input) ? `:${paramContentRegx.exec(input)[0]}` : input
+  return paramRegx.test(input) ? `:${input.match(paramContentRegx)}` : input
 }
 
 const getAll = async (dir) => {
