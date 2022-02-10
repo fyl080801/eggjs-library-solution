@@ -1,6 +1,6 @@
 {
   "name": "@egglib/render-editor",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "> TODO: description",
   "author": "fengyuanliang3",
   "homepage": "https://github.com/fyl080801/eggjs-library-solution#readme",
@@ -24,7 +24,6 @@
   "bugs": {
     "url": "https://github.com/fyl080801/eggjs-library-solution/issues"
   },
-  "dependencies": {},
   "devDependencies": {
     "@jrender-legacy/core": "^1.0.4",
     "@jrender-legacy/extends": "^1.0.5",
