@@ -1,3 +1,5 @@
+import { prefix } from '../../utils/app'
+
 export const RouteExtends = ({ addFunction }) => {
   const buildStateEvent = (type) => {
     const historyEvent = history[type]
@@ -15,8 +17,8 @@ export const RouteExtends = ({ addFunction }) => {
 
   addFunction('TO', (path, replace) => {
     !replace
-      ? history.pushState({}, null, path)
-      : history.replaceState({}, null, path)
+      ? history.pushState({}, null, `${prefix}${path}`)
+      : history.replaceState({}, null, `${prefix}${path}`)
   })
 
   addFunction('BACK', () => {

@@ -48,14 +48,14 @@ const getAll = async (dir) => {
 
 class RenderService extends Service {
   async getRenderPage(path) {
-    let { configDir } = this.app.config.render || {}
+    let { configRoot } = this.app.config.render || {}
 
-    configDir = configDir || resolve(process.cwd(), 'renders')
+    configRoot = configRoot || resolve(process.cwd(), 'renders')
 
     if (!this.app.renderConfig) {
       this.app.renderConfig = {}
 
-      const configFile = resolve(configDir, '.render')
+      const configFile = resolve(configRoot, '.render')
 
       const haveConfig = fs.existsSync(configFile)
 
@@ -68,7 +68,7 @@ class RenderService extends Service {
     }
 
     if (!this.app.renders) {
-      const all = await getAll(configDir)
+      const all = await getAll(configRoot)
 
       this.app.renders = all.map((item) => {
         return {
@@ -81,7 +81,7 @@ class RenderService extends Service {
           ),
           reader: async () => {
             return await fs.promises.readFile(
-              resolve(configDir, `${item}.yaml`),
+              resolve(configRoot, `${item}.yaml`),
               'utf-8',
             )
           },
@@ -106,7 +106,7 @@ class RenderService extends Service {
         return pageConfig
       } else if (this.app.renderConfig.default) {
         const defaultFilePath = join(
-          configDir,
+          configRoot,
           `${this.app.renderConfig.default.replace(extRegx, '')}.yaml`,
         )
 

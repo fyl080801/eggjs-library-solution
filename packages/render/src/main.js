@@ -3,7 +3,7 @@ import VueCompositionAPI from '@vue/composition-api'
 import JRender, { useGlobalRender } from '@jrender-legacy/core'
 import JRenderExtends from '@jrender-legacy/extends'
 import { LibExtends, RouteExtends } from './components'
-import { system } from './utils/app'
+import { external } from './utils/app'
 import App from './App'
 import 'systemjs'
 
@@ -13,9 +13,23 @@ window.JRender = {
   useGlobalRender,
 }
 
-const config = system ? JSON.parse(system) : []
+const config = external ? JSON.parse(external) : []
 
-Promise.all(config.map((item) => window.System.import(item))).then(() => {
+const styles = []
+
+const existingImport = System.constructor.prototype.import
+
+System.constructor.prototype.import = function (args) {
+  return Promise.resolve(existingImport.call(this, args)).then((result) => {
+    if (result.default && result.default.type === 'text/css') {
+      styles.push(result.default)
+    }
+  })
+}
+
+Promise.all(config.map((item) => System.import(item))).then(() => {
+  document.adoptedStyleSheets = [...document.adoptedStyleSheets, ...styles]
+
   Vue.use(VueCompositionAPI)
   Vue.use(JRender)
 
