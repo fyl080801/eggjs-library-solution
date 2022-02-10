@@ -25,5 +25,13 @@ exports.render = {
       type: 'link',
       href: 'https://cdn.jsdelivr.net/npm/element-ui/lib/theme-chalk/index.css',
     },
+    {
+      type: 'system',
+      src: '/public/render/component.js',
+    },
+    {
+      type: 'link',
+      href: '/public/render/extstyle.css',
+    },
   ],
 }

@@ -27,3 +27,5 @@ fields:
           innerText: go sample2
         on:
           click: $:()=>TO('/views/category1/index')
+
+  - type: test-component
