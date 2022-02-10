@@ -6,10 +6,11 @@ exports.statics = {
   default: '@egglib/render',
   clients: {
     '@egglib/render': {
-      type: 'dev',
+      dev: true,
+      // dist: '',
     },
     '@egglib/render-editor': {
-      type: 'dev',
+      dev: true,
     },
   },
   env: {},
@@ -27,5 +28,5 @@ exports.render = {
 }
 
 exports.renderEditor = {
-  prefix: '/render-editor111',
+  prefix: '/render-editor',
 }

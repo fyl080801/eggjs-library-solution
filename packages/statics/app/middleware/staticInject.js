@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (options, app) => {
+module.exports = (_, app) => {
   // static
   app.config.static.dir = [
     {

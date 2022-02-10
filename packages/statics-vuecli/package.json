@@ -20,10 +20,11 @@
     "webpack": "^4.46.0"
   },
   "eggPlugin": {
-    "name": "@egglib/statics",
+    "name": "@egglib/statics-vuecli",
     "dep": [
       "static",
-      "nunjucks"
+      "nunjucks",
+      "@egglib/statics"
     ]
   }
 }

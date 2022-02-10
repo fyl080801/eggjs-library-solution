@@ -1,8 +1,8 @@
 'use strict'
 
-const path = require('path')
+// const path = require('path')
 const { createServer, loadConfigFromFile, mergeConfig } = require('vite')
-const fs = require('fs')
+// const fs = require('fs')
 const net = require('net')
 const os = require('os')
 
@@ -10,38 +10,38 @@ const serviceToken = Symbol('serviceToken')
 const serviceInitToken = Symbol('Application#serviceInitToken')
 
 const VITE = Symbol('Application#vite')
-const STATICS = Symbol('Application#statcis')
+// const STATICS = Symbol('Application#statcis')
 
-const getCallerFile = function () {
-  let filename
+// const getCallerFile = function () {
+//   let filename
 
-  const pst = Error.prepareStackTrace
+//   const pst = Error.prepareStackTrace
 
-  Error.prepareStackTrace = function (err, stack) {
-    return stack
-  }
+//   Error.prepareStackTrace = function (err, stack) {
+//     return stack
+//   }
 
-  try {
-    let callerFile
-    const err = new Error()
-    const currentFile = err.stack.shift().getFileName()
+//   try {
+//     let callerFile
+//     const err = new Error()
+//     const currentFile = err.stack.shift().getFileName()
 
-    while (err.stack.length) {
-      callerFile = err.stack.shift().getFileName()
+//     while (err.stack.length) {
+//       callerFile = err.stack.shift().getFileName()
 
-      if (currentFile !== callerFile) {
-        filename = callerFile
-        break
-      }
-    }
-  } catch (err) {
-    //
-  }
+//       if (currentFile !== callerFile) {
+//         filename = callerFile
+//         break
+//       }
+//     }
+//   } catch (err) {
+//     //
+//   }
 
-  Error.prepareStackTrace = pst
+//   Error.prepareStackTrace = pst
 
-  return path.dirname(filename)
-}
+//   return path.dirname(filename)
+// }
 
 const getLocalHosts = () => {
   const interfaces = os.networkInterfaces()
@@ -124,12 +124,12 @@ module.exports = {
     return this[VITE]
   },
 
-  get statics() {
-    if (!this[STATICS]) {
-      this[STATICS] = {}
-    }
-    return this[STATICS]
-  },
+  // get statics() {
+  //   if (!this[STATICS]) {
+  //     this[STATICS] = {}
+  //   }
+  //   return this[STATICS]
+  // },
 
   get _viteService() {
     if (!this[serviceToken]) {
@@ -144,25 +144,6 @@ module.exports = {
   },
   set _viteInit(value) {
     this[serviceInitToken] = value
-  },
-
-  addPageConfig(name, dir) {
-    const { clients = {} } = this.config.statics || {}
-    const dirname = dir || getCallerFile.call(this)
-    const client = clients[name] || {}
-
-    if (!client.type || client.type === 'dist') {
-      this.statics[name] = path.resolve(dirname, client.dist || 'dist')
-    } else if (client.type === 'dev') {
-      this.viteConfigs[name] = {
-        name,
-        rootPath: dirname,
-        configFile: path.resolve(
-          dirname,
-          client.configFile || 'vite.config.js',
-        ),
-      }
-    }
   },
 
   async getServer(currentCtx) {
@@ -232,41 +213,5 @@ module.exports = {
     return this._viteService[
       typeof currentCtx === 'string' ? currentCtx : staticsMatcher(currentCtx)
     ]
-  },
-
-  viewInject(name, view) {
-    const { clients = {}, env = {} } = this.config.statics || {}
-    const client = clients[name] || {}
-
-    return async (ctx, next) => {
-      await next()
-
-      const data = Object.assign(
-        env,
-        (typeof ctx.body === 'object' && ctx.body) || {},
-      )
-
-      if (!client.type || client.type === 'dist') {
-        const config = this.statics[name]
-        await ctx.render(path.resolve(config, view), data)
-      } else if (client.type === 'dev') {
-        const config = this.viteConfigs[name]
-
-        const server = await this.getServer(name)
-
-        if (!server) {
-          return await next()
-        }
-
-        const content = await server.transformIndexHtml(
-          ctx.request.url,
-          await fs.promises.readFile(path.join(config.rootPath, view), 'utf-8'),
-        )
-
-        ctx.body = await ctx.renderString(content, data)
-      }
-
-      ctx.set('Content-Type', 'text/html')
-    }
   },
 }
