@@ -25,3 +25,7 @@ exports.render = {
     '/public/render/extstyle.css',
   ],
 }
+
+exports.renderEditor = {
+  prefix: '/render-editor111',
+}

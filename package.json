@@ -20,7 +20,6 @@
     "autod-egg": "^1.1.0",
     "cz-conventional-changelog": "^3.3.0",
     "egg-bin": "^4.17.0",
-    "egg-ci": "^1.19.0",
     "egg-mock": "^4.2.0",
     "eslint": "8.8.0",
     "eslint-config-egg": "^10.0.0",
@@ -43,11 +42,7 @@
     "stop": "egg-scripts stop --title=egg-server-eggjs-test1",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug --env=prod",
-    "test": "npm run lint -- --fix && npm run test-local",
-    "test-local": "egg-bin test",
-    "cov": "egg-bin cov",
     "lint": "eslint .",
-    "ci": "npm run lint && npm run cov",
     "autod": "autod",
     "prepack": "yarn run build",
     "postinstall": "husky install",
@@ -55,9 +50,6 @@
     "postpublish": "yarn run clean",
     "commit": "git add . && git status && git-cz",
     "lint-staged": "lint-staged"
-  },
-  "ci": {
-    "version": "12"
   },
   "repository": {
     "type": "git",

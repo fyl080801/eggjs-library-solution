@@ -36,6 +36,7 @@
     "vite-plugin-vue2": "^1.9.3",
     "vite-plugin-windicss": "^1.7.0",
     "vue": "^2.6.14",
+    "vue-router": "3",
     "vue-template-compiler": "^2.6.14",
     "windicss": "^3.4.3"
   },
@@ -44,5 +45,8 @@
     "dep": [
       "@egglib/statics"
     ]
+  },
+  "dependencies": {
+    "url-join": "^4.0.1"
   }
 }
