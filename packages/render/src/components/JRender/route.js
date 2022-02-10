@@ -16,9 +16,16 @@ export const RouteExtends = ({ addFunction }) => {
   history.replaceState = buildStateEvent('replaceState')
 
   addFunction('TO', (path, replace) => {
+    const normalPath =
+      '/' +
+      `${prefix}${path}`
+        .split('/')
+        .filter((item) => item)
+        .join('/')
+
     !replace
-      ? history.pushState({}, null, `${prefix}${path}`)
-      : history.replaceState({}, null, `${prefix}${path}`)
+      ? history.pushState({}, null, normalPath)
+      : history.replaceState({}, null, normalPath)
   })
 
   addFunction('BACK', () => {
