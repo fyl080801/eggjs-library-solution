@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import legacy from '@vitejs/plugin-legacy'
 import { createVuePlugin } from 'vite-plugin-vue2'
+import WindiCSS from 'vite-plugin-windicss'
 
 import { name } from './package.json'
 
@@ -16,5 +17,6 @@ export default defineConfig({
       targets: ['defaults', 'IE 11'],
     }),
     createVuePlugin(),
+    WindiCSS(),
   ],
 })
