@@ -1,7 +1,7 @@
 {
-  "name": "@egglib/render",
-  "version": "0.2.0",
-  "description": "动态渲染模块",
+  "name": "@egglib/render-editor",
+  "version": "0.0.1",
+  "description": "> TODO: description",
   "author": "fengyuanliang3",
   "homepage": "https://github.com/fyl080801/eggjs-library-solution#readme",
   "license": "ISC",
@@ -24,10 +24,7 @@
   "bugs": {
     "url": "https://github.com/fyl080801/eggjs-library-solution/issues"
   },
-  "dependencies": {
-    "js-yaml": "^4.1.0",
-    "path-to-regex": "^1.3.8"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@jrender-legacy/core": "^1.0.4",
     "@jrender-legacy/extends": "^1.0.5",
@@ -42,7 +39,7 @@
     "vue-template-compiler": "^2.6.14"
   },
   "eggPlugin": {
-    "name": "@egglib/render",
+    "name": "@egglib/render-editor",
     "dep": [
       "@egglib/statics"
     ]

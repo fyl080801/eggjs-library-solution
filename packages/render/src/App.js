@@ -8,6 +8,7 @@ import {
   onBeforeUnmount,
 } from '@vue/composition-api'
 import { request } from './utils/request'
+import { prefix } from './utils/app'
 
 export default defineComponent({
   setup() {
@@ -16,7 +17,10 @@ export default defineComponent({
     const updating = ref(false)
 
     const load = (path) => {
-      request({ url: '/api/v1/render', params: { path } }).then((response) => {
+      request({
+        url: '/api/v1/render',
+        params: { path: path.replace(prefix, '') },
+      }).then((response) => {
         config.value = response.data
       })
     }

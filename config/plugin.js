@@ -20,4 +20,7 @@ module.exports = {
   '@egglib/render': {
     enable: true,
   },
+  '@egglib/render-editor': {
+    enable: true,
+  },
 }

@@ -3,7 +3,6 @@
   "globals": {
     "window": true,
     "document": true,
-    "history": true,
-    "System": true
+    "history": true
   }
 }

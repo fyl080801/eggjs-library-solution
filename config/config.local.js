@@ -8,30 +8,20 @@ exports.statics = {
     '@egglib/render': {
       type: 'dev',
     },
+    '@egglib/render-editor': {
+      type: 'dev',
+    },
   },
   env: {},
 }
 
 exports.render = {
-  homePath: '*',
-  renderPath: '/egglib/render',
-  configDir: path.resolve(process.cwd(), 'pages'),
+  // prefix: '/render',
+  configRoot: path.resolve(process.cwd(), 'pages'),
   external: [
-    {
-      type: 'system',
-      src: 'https://cdn.jsdelivr.net/npm/element-ui/lib/index.js',
-    },
-    {
-      type: 'link',
-      href: 'https://cdn.jsdelivr.net/npm/element-ui/lib/theme-chalk/index.css',
-    },
-    {
-      type: 'system',
-      src: '/public/render/component.js',
-    },
-    {
-      type: 'link',
-      href: '/public/render/extstyle.css',
-    },
+    'https://cdn.jsdelivr.net/npm/element-ui/lib/index.js',
+    'https://cdn.jsdelivr.net/npm/element-ui/lib/theme-chalk/index.css',
+    '/public/render/component.js',
+    '/public/render/extstyle.css',
   ],
 }

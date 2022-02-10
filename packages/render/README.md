@@ -1,6 +1,6 @@
 # `@egglib/render`
 
-> TODO: description
+> 动态渲染模块
 
 ## Usage
 
