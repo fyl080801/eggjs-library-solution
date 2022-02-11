@@ -1,4 +1,4 @@
-import * as Container from './Container'
+import * as Container from './Containers'
 import * as DocumentTree from './DocumentTree'
 import Vue from 'vue'
 
