@@ -1,0 +1,42 @@
+* {
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  /* appearance: none; */
+  -moz-osx-font-smoothing: grayscale;
+  border: none;
+  outline: none;
+  z-index: 0;
+  position: relative;
+}
+
+*:focus {
+  outline: none;
+}
+
+input {
+  min-width: 0;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+}
+
+img {
+  vertical-align: middle;
+  display: inline-block;
+  object-fit: cover;
+  line-height: 0;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: unset;
+}

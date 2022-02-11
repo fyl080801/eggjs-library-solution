@@ -30,7 +30,7 @@ module.exports = (app) => {
     },
 
     async viewInjector({ name, ctx, view }) {
-      const config = this.webpackConfigs[name]
+      const config = app.vuecliConfigs[name]
 
       const viewUrl = `${ctx.request.protocol}://${path.join(
         ctx.request.host,

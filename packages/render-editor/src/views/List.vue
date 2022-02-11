@@ -1,3 +1,5 @@
 <template>
-  <div>list</div>
+  <div>
+    <router-link to="workspace">to editor</router-link>
+  </div>
 </template>

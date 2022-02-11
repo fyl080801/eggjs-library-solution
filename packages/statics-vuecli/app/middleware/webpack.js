@@ -14,7 +14,7 @@ module.exports = (options, app) => {
           })
 
           if (!key) {
-            key = Object.keys(app.webpackConfigs || {}).find((p) => {
+            key = Object.keys(app.vuecliConfigs || {}).find((p) => {
               return ctx.request.url.indexOf(`/${p}/`) === 0
             })
           }
@@ -24,8 +24,8 @@ module.exports = (options, app) => {
 
   const middlewareMap = {}
 
-  Object.keys(app.webpackConfigs).forEach((key) => {
-    middlewareMap[key] = koaWebpack(app.webpackConfigs[key])
+  Object.keys(app.vuecliConfigs).forEach((key) => {
+    middlewareMap[key] = koaWebpack(app.vuecliConfigs[key])
   })
 
   return async function (ctx, next) {

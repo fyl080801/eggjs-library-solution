@@ -1,6 +1,6 @@
 {
   "name": "@egglib/render-editor",
-  "version": "0.0.3",
+  "version": "0.0.4-alpha.0",
   "description": "> TODO: description",
   "author": "fengyuanliang3",
   "homepage": "https://github.com/fyl080801/eggjs-library-solution#readme",
@@ -31,7 +31,9 @@
     "@vue/composition-api": "^1.4.6",
     "axios": "^0.25.0",
     "core-js": "^3.21.0",
+    "pinia": "^2.0.11",
     "systemjs": "^6.12.1",
+    "unplugin-vue2-script-setup": "^0.9.2",
     "vite": "^2.7.13",
     "vite-plugin-vue2": "^1.9.3",
     "vite-plugin-windicss": "^1.7.0",

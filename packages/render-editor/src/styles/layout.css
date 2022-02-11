@@ -1,0 +1,346 @@
+.stack{
+	display: inline-flex;
+	align-items: stretch;
+	justify-content: stretch;
+}
+.stack > *{
+	position: relative;
+}
+.stack.x{
+	flex-direction: row;
+}
+.stack.y{
+	flex-direction: column;
+}
+.stack.xr{
+	flex-direction: row-reverse;
+}
+.stack.yr{
+	flex-direction: column-reverse;
+}
+
+/* stack gap */
+.stack.x:not(.main-between).gap-1 > *:not(:first-child):not(.abs){
+	margin-left: var(--length-1);
+}
+.stack.x:not(.main-between).gap-2 > *:not(:first-child):not(.abs){
+	margin-left: var(--length-2);
+}
+.stack.x:not(.main-between).gap-4 > *:not(:first-child):not(.abs){
+	margin-left: var(--length-4);
+}
+.stack.x:not(.main-between).gap-8 > *:not(:first-child):not(.abs){
+	margin-left: var(--length-8);
+}
+.stack.x:not(.main-between).gap-12 > *:not(:first-child):not(.abs){
+	margin-left: var(--length-12);
+}
+.stack.x:not(.main-between).gap-16 > *:not(:first-child):not(.abs){
+	margin-left: var(--length-16);
+}
+.stack.x:not(.main-between).gap-24 > *:not(:first-child):not(.abs){
+	margin-left: var(--length-24);
+}
+.stack.y:not(.main-between).gap-1 > *:not(:first-child):not(.abs){
+	margin-top: var(--length-1);
+}
+.stack.y:not(.main-between).gap-2 > *:not(:first-child):not(.abs){
+	margin-top: var(--length-2);
+}
+.stack.y:not(.main-between).gap-4 > *:not(:first-child):not(.abs){
+	margin-top: var(--length-4);
+}
+.stack.y:not(.main-between).gap-8 > *:not(:first-child):not(.abs){
+	margin-top: var(--length-8);
+}
+.stack.y:not(.main-between).gap-12 > *:not(:first-child):not(.abs){
+	margin-top: var(--length-12);
+}
+.stack.y:not(.main-between).gap-16 > *:not(:first-child):not(.abs){
+	margin-top: var(--length-16);
+}
+.stack.y:not(.main-between).gap-24 > *:not(:first-child):not(.abs){
+	margin-top: var(--length-24);
+}
+
+/* cross axis item align */
+.stack.cross-stretch{
+	align-items: stretch;
+}
+.stack.x.cross-stretch > *{
+	height: 100%;
+}
+.stack.y.cross-stretch > *{
+	width: 100%;
+}
+.stack.cross-start{
+	align-items: flex-start;
+}
+.stack.cross-center{
+	align-items: center;
+}
+.stack.cross-end{
+	align-items: flex-end;
+}
+/* main axis items arrange */
+.stack.main-start{
+	justify-content: flex-start;
+}
+.stack.main-center{
+	justify-content: center;
+}
+.stack.main-end{
+	justify-content: flex-end;
+}
+.stack.main-between{
+	justify-content: space-between;
+}
+.stack.main-stretch > * {
+	flex: auto;
+}
+.stack.x.main-stretch > *{
+	width: 0; /* 用来修复愚蠢的 flexbox 的渲染 bug */
+}
+.stack.y.main-stretch > *{
+	height: 0; /* 用来修复愚蠢的 flexbox 的渲染 bug */
+}
+.stack.main-between > *:not(.item-flex),
+.stack.main-start > *:not(.item-flex),
+.stack.main-center > *:not(.item-flex),
+.stack.main-end > *:not(.item-flex) {
+	flex: none;
+}
+.stack.main-between > *.item-flex,
+.stack.main-start > *.item-flex,
+.stack.main-center > *.item-flex,
+.stack.main-end > *.item-flex {
+	flex: auto;
+}
+
+/* grid */
+.grid {
+	display: inline-grid;
+}
+.grid > * {
+	position: relative;
+}
+
+.grid.x-2{
+	grid-template-columns: repeat(2, 1fr);
+}
+.grid.x-3{
+	grid-template-columns: repeat(3, 1fr);
+}
+.grid.x-4{
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.grid.y-2{
+	grid-template-rows: repeat(2, 1fr);
+}
+.grid.y-3{
+	grid-template-rows: repeat(3, 1fr);
+}
+.grid.y-4{
+	grid-template-rows: repeat(4, 1fr);
+}
+
+/* x 轴内容对齐方式 */
+.grid.main-start{
+	justify-content: start;
+}
+.grid.main-center{
+	justify-content: center;
+}
+.grid.main-end{
+	justify-content: end;
+}
+.grid.main-stretch{
+	justify-content: stretch;
+}
+.grid.main-between{
+	justify-content: space-between;
+}
+/* y 轴内容对齐方式 */
+.grid.sec-main-start{
+	align-content: start;
+}
+.grid.sec-main-center{
+	align-content: center;
+}
+.grid.sec-main-end{
+	align-content: end;
+}
+.grid.sec-main-stretch{
+	align-content: stretch;
+}
+.grid.sec-main-between{
+	align-content: space-between;
+}
+/* grid 的 y 方向 gap */
+.grid.gap-y-1 {
+	grid-row-gap: var(--length-1);
+}
+.grid.gap-y-2 {
+	grid-row-gap: var(--length-2);
+}
+.grid.gap-y-4 {
+	grid-row-gap: var(--length-4);
+}
+.grid.gap-y-8 {
+	grid-row-gap: var(--length-8);
+}
+.grid.gap-y-12 {
+	grid-row-gap: var(--length-12);
+}
+.grid.gap-y-16 {
+	grid-row-gap: var(--length-16);
+}
+.grid.gap-y-24 {
+	grid-row-gap: var(--length-24);
+}
+/* grid 的 x 方向 gap */
+.grid.gap-x-1 {
+	grid-column-gap: var(--length-1);
+}
+.grid.gap-x-2 {
+	grid-column-gap: var(--length-2);
+}
+.grid.gap-x-4 {
+	grid-column-gap: var(--length-4);
+}
+.grid.gap-x-8 {
+	grid-column-gap: var(--length-8);
+}
+.grid.gap-x-12 {
+	grid-column-gap: var(--length-12);
+}
+.grid.gap-x-16 {
+	grid-column-gap: var(--length-16);
+}
+.grid.gap-x-24 {
+	grid-column-gap: var(--length-24);
+}
+
+
+/* padding */
+.padding-1{
+	padding: var(--length-1);
+}
+.padding-2{
+	padding: var(--length-2);
+}
+.padding-4{
+	padding: var(--length-4);
+}
+.padding-8{
+	padding: var(--length-8);
+}
+.padding-12{
+	padding: var(--length-12);
+}
+.padding-16{
+	padding: var(--length-16);
+}
+.padding-24{
+	padding: var(--length-24);
+}
+.padding-32{
+	padding: var(--length-32);
+}
+.padding-x-1{
+	padding-left: var(--length-1);
+	padding-right: var(--length-1);
+}
+.padding-x-2{
+	padding-left: var(--length-2);
+	padding-right: var(--length-2);
+}
+.padding-x-4{
+	padding-left: var(--length-4);
+	padding-right: var(--length-4);
+}
+.padding-x-8{
+	padding-left: var(--length-8);
+	padding-right: var(--length-8);
+}
+.padding-x-12{
+	padding-left: var(--length-12);
+	padding-right: var(--length-12);
+}
+.padding-x-16{
+	padding-left: var(--length-16);
+	padding-right: var(--length-16);
+}
+.padding-x-24{
+	padding-left: var(--length-24);
+	padding-right: var(--length-24);
+}
+.padding-x-32{
+	padding-left: var(--length-32);
+	padding-right: var(--length-32);
+}
+.padding-y-1{
+	padding-top: var(--length-1);
+	padding-bottom: var(--length-1);
+}
+.padding-y-2{
+	padding-top: var(--length-2);
+	padding-bottom: var(--length-2);
+}
+.padding-y-4{
+	padding-top: var(--length-4);
+	padding-bottom: var(--length-4);
+}
+.padding-y-8{
+	padding-top: var(--length-8);
+	padding-bottom: var(--length-8);
+}
+.padding-y-12{
+	padding-top: var(--length-12);
+	padding-bottom: var(--length-12);
+}
+.padding-y-16{
+	padding-top: var(--length-16);
+	padding-bottom: var(--length-16);
+}
+.padding-y-24{
+	padding-top: var(--length-24);
+	padding-bottom: var(--length-24);
+}
+.padding-y-32{
+	padding-top: var(--length-32);
+	padding-bottom: var(--length-32);
+}
+/* scroll */
+.scroll{
+	overflow: scroll;
+}
+.scroll-x{
+	overflow-x: scroll;
+}
+.scroll-y{
+	overflow-y: scroll;
+}
+
+.scroll > * {
+	position: absolute;
+}
+.scroll-x > * {
+	position: relative;
+	height: 100%;
+}
+.scroll-y > * {
+	position: relative;
+	width: 100%;
+}
+.hide-bar{
+	scrollbar-width: none;
+}
+.hide-bar::-webkit-scrollbar{
+	display: none;
+}
+
+.clip{
+	overflow: hidden;
+}
