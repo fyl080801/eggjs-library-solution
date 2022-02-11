@@ -22,7 +22,7 @@ module.exports = (app, name) => {
       ctx.body = {
         prefix: renderPrefix,
         external: JSON.stringify(external),
-        styles: JSON.stringify(styles),
+        styles,
       }
     },
   )
