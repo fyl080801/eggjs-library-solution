@@ -16,8 +16,6 @@
     "egg-scripts": "^2.15.2"
   },
   "devDependencies": {
-    "autod": "^3.1.2",
-    "autod-egg": "^1.1.0",
     "cz-conventional-changelog": "^3.3.0",
     "egg-bin": "^4.17.0",
     "egg-mock": "^4.2.0",
@@ -43,7 +41,6 @@
     "dev": "egg-bin dev",
     "debug": "egg-bin debug --env=prod",
     "lint": "eslint .",
-    "autod": "autod",
     "prepack": "yarn run build",
     "postinstall": "husky install",
     "publish": "lerna publish",

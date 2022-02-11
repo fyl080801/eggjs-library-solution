@@ -1,0 +1,47 @@
+.position--abs{
+    position: absolute;
+}
+
+/* IN STACK X */
+/* flex */
+.layout--stack.stack-dir--x > .constrain-left.constrain-right {
+	flex: auto;
+}
+/* cross align: start */
+.layout--stack.stack-dir--x > .constrain.constrain-top:not(.constrain-bottom) {
+	align-self: flex-start;
+}
+/* cross align: center */
+.layout--stack.stack-dir--x > .constrain:not(.constrain-top):not(.constrain-bottom) {
+	align-self: center;
+}
+/* cross align: end */
+.layout--stack.stack-dir--x > .constrain.constrain-bottom:not(.constrain-top) {
+	align-self: flex-end;
+}
+/* cross align: stretch */
+.layout--stack.stack-dir--x > .constrain.constrain-bottom.constrain-top {
+	align-self: stretch;
+}
+
+/* IN STACK y */
+/* flex */
+.layout--stack.stack-dir--y > .constrain-top.constrain-bottom {
+	flex: auto;
+}
+/* cross align: start */
+.layout--stack.stack-dir--y > .constrain.constrain-left:not(.constrain-right) {
+	align-self: flex-start;
+}
+/* cross align: center */
+.layout--stack.stack-dir--y > .constrain:not(.constrain-left):not(.constrain-right) {
+	align-self: center;
+}
+/* cross align: end */
+.layout--stack.stack-dir--y > .constrain.constrain-right:not(.constrain-left) {
+	align-self: flex-end;
+}
+/* cross align: stretch */
+.layout--stack.stack-dir--y > .constrain.constrain-left.constrain-right {
+	align-self: stretch;
+}

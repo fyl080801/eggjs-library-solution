@@ -1,3 +1,16 @@
+<script>
+import { defineComponent } from '@vue/composition-api'
+import { useEditorStore } from '../store'
+
+export default defineComponent({
+  setup() {
+    const editorStore = useEditorStore()
+
+    return {}
+  },
+})
+</script>
+
 <template>
   <div
     class="absolute top-0 left-0 bottom-0 right-0 flex flex-col justify-between"

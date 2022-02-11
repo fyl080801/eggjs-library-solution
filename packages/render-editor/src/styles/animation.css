@@ -1,0 +1,10 @@
+.ani {
+    /* transition: all ; */
+    transform: all cubic-bezier(.56,.01,.53,1);
+}
+.fast {
+    transition-duration: 0.25s;
+}
+.slow {
+    transition-duration: 0.5s;
+}

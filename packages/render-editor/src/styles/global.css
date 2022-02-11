@@ -1,0 +1,138 @@
+/* color */
+/* :root {
+    --color-gray-0: #f6f7f7;
+    --color-gray-1: #ecf1f3;
+    --color-gray-2: #dfe7ec;
+    --color-gray-3: #d0dae1;
+    --color-gray-4: #bdc8d1;
+    --color-gray-5: #a7b1ba;
+    --color-gray-6: #8b949d;
+    --color-gray-7: #6a7078;
+    --color-gray-8: #44484e;
+    --color-gray-9: #1d1e21;
+
+    --color-blue-0: #F6FDFF;
+    --color-blue-1: #BBECFF;
+    --color-blue-2: #82D9FF;
+    --color-blue-3: #50C2FE;
+    --color-blue-4: #29A7FC;
+    --color-blue-5: #0C89F8;
+    --color-blue-6: #0070EE;
+    --color-blue-7: #005DD6;
+    --color-blue-8: #00409B;
+    --color-blue-9: #00122E;
+
+    --color-green-0: #F4FFFA;
+    --color-green-1: #AEFBD9;
+    --color-green-2: #6CF5B6;
+    --color-green-3: #34EA90;
+    --color-green-4: #0BDB6A;
+    --color-green-5: #00C650;
+    --color-green-6: #00AB3D;
+    --color-green-7: #00892D;
+    --color-green-8: #00611E;
+    --color-green-9: #003811;
+
+    --color-red-0: #fff2f2;
+    --color-red-1: #fcb4b7;
+    --color-red-2: #f77a80;
+    --color-red-3: #ef4852;
+    --color-red-4: #e42232;
+    --color-red-5: #d4071e;
+    --color-red-6: #c0001d;
+    --color-red-7: #a60020;
+    --color-red-8: #880021;
+    --color-red-9: #69001e;
+
+    --color-yellow-0: #FFFCF4;
+    --color-yellow-1: #FBECBE;
+    --color-yellow-2: #F5D789;
+    --color-yellow-3: #EABB5C;
+    --color-yellow-4: #DB9839;
+    --color-yellow-5: #C67320;
+    --color-yellow-6: #AB520F;
+    --color-yellow-7: #893705;
+    --color-yellow-8: #612200;
+    --color-yellow-9: #381300;
+
+    --color-white: #fff;
+    --color-black: #000;
+} */
+
+/* length */
+:root{
+    font-size: 16px;
+    --length-1: 1px;
+    --length-2:  0.125rem;
+    --length-4:  0.25rem;
+    --length-8:  0.5rem;
+    --length-12: 0.75rem;
+    --length-16: 1rem;
+    --length-24: 1.5rem;
+    --length-32: 2rem;
+    --length-48: 3rem;
+    --length-64: 4rem;
+}
+
+/* radius */
+.r-1{
+    border-radius: 4px;
+}
+.r-2{
+    border-radius: 8px;
+}
+.r-3{
+    border-radius: 12px;
+}
+.r-oval{
+    border-radius: 50%;
+}
+.r-pill{
+    border-radius: 9999999px;
+}
+
+/* shadows */
+.shd-1 {
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
+}
+.shd-2 {
+    box-shadow: 0 4px 8px -2px rgba(0,0,0,0.25);
+}
+.shd-3 {
+    box-shadow: 0 8px 16px -3px rgba(0,0,0,0.25);
+}
+  
+
+/* typography */
+
+    /* inter, SF, PF, Sans */
+
+/* interaction */
+
+.pointer{
+    cursor: pointer;
+}
+
+.pe-off {
+    pointer-events: none;
+}
+.pe-on {
+    pointer-events: auto;
+}
+
+.user-select-none{
+    user-select: none;
+}
+.user-select-auto{
+    user-select: auto;
+}
+.user-select-all{
+    user-select: all;
+}
+
+.ellipsis{
+    /* flex 布局的亲儿子无效，需要嵌套 */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

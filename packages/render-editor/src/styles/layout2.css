@@ -1,0 +1,177 @@
+/* layout.css 升级版，使用了新的类名和样式内容。并支持和 1 共存。 */
+/* 暂不支持涉及到距离的样式和 grid 布局相关属性，后续将补充 */
+
+/* 使用 off 布局 */
+.layout--off {
+    display: inline-block;
+}
+.layout--off > *{
+    position: absolute;
+}
+
+/* 使用 stack 布局 */
+.layout--stack {
+    display: inline-flex;
+	align-items: stretch;
+	justify-content: stretch;
+}
+.layout--stack > * {
+    position: relative;
+}
+
+/* 使用 grid 布局 */
+.layout--grid {
+    display: inline-grid;
+}
+.layout--grid > * {
+    position: relative;
+}
+
+/* stack direction */
+.stack-dir--x {
+	flex-direction: row;
+}
+.stack-dir--y {
+	flex-direction: column;
+}
+.stack-dir--xr {
+	flex-direction: row-reverse;
+}
+.stack-dir--yr {
+	flex-direction: column-reverse;
+}
+
+/* main axis align */
+.layout--stack.main-align--start{
+    align-items: flex-start;
+}
+.layout--stack.main-align--center{
+    align-items: center;
+}
+.layout--stack.main-align--end{
+    align-items: flex-end;
+}
+.layout--stack.main-align--stretch{
+	align-items: stretch;
+}
+.layout--stack.stack-dir--x.main-align--stretch > *{
+	height: 100%; /* 用来修复愚蠢的 flexbox 的渲染 bug */
+}
+.layout--stack.stack-dir--y.main-align--stretch > *{
+	width: 100%; /* 用来修复愚蠢的 flexbox 的渲染 bug */
+}
+
+/* main axis arrange */
+.layout--stack.main-arrange--start{
+	justify-content: flex-start;
+}
+.layout--stack.main-arrange--center{
+	justify-content: center;
+}
+.layout--stack.main-arrange--end{
+	justify-content: flex-end;
+}
+.layout--stack.main-arrange--between{
+	justify-content: space-between;
+}
+.layout--stack.main-arrange--stretch > * {
+	flex: auto;
+}
+.layout--stack.stack-dir--x.main-arrange--stretch > *{
+	width: 0; /* 用来修复愚蠢的 flexbox 的渲染 bug */
+}
+.layout--stack.stack-dir--y.main-arrange--stretch > *{
+	height: 0; /* 用来修复愚蠢的 flexbox 的渲染 bug */
+}
+
+/* 以下部分暂时不可用，需要周中石完善，修改子元素的类名 */
+
+.layout--stack.main-arrange--between > *:not(.item-flex),
+.layout--stack.main-arrange--start > *:not(.item-flex),
+.layout--stack.main-arrange--center > *:not(.item-flex),
+.layout--stack.main-arrange--end > *:not(.item-flex) {
+	flex: none;
+}
+.layout--stack.main-arrange--between > *.item-flex,
+.layout--stack.main-arrange--start > *.item-flex,
+.layout--stack.main-arrange--center > *.item-flex,
+.layout--stack.main-arrange--end > *.item-flex {
+	flex: auto;
+}
+
+/* position todo */
+.layout--off > .align-x--start{
+    background: #000;
+}
+.layout--off > .align-x--end{
+    background: #000;
+}
+.layout--off > .align-x--center{
+    background: #000;
+}
+.layout--off > .align-x--stretch{
+    background: #000;
+}
+.layout--off > .align-y--start{
+    background: #000;
+}
+.layout--off > .align-y--end{
+    background: #000;
+}
+.layout--off > .align-y--center{
+    background: #000;
+}
+.layout--off > .align-y--stretch{
+    background: #000;
+}
+
+
+.layout--stack.stack-dir-x > .align-x--start{
+    background: #000;
+}
+.layout--stack.stack-dir-x > .align-x--end{
+    background: #000;
+}
+.layout--stack.stack-dir-x > .align-x--center{
+    background: #000;
+}
+.layout--stack.stack-dir-x > .align-x--stretch{
+    background: #000;
+}
+.layout--stack.stack-dir-x > .align-y--start{
+    background: #000;
+}
+.layout--stack.stack-dir-x > .align-y--end{
+    background: #000;
+}
+.layout--stack.stack-dir-x > .align-y--center{
+    background: #000;
+}
+.layout--stack.stack-dir-x > .align-y--stretch{
+    background: #000;
+}
+
+.layout--stack.stack-dir-y > .align-x--start{
+    background: #000;
+}
+.layout--stack.stack-dir-y > .align-x--end{
+    background: #000;
+}
+.layout--stack.stack-dir-y > .align-x--center{
+    background: #000;
+}
+.layout--stack.stack-dir-y > .align-x--stretch{
+    background: #000;
+}
+.layout--stack.stack-dir-y > .align-y--start{
+    background: #000;
+}
+.layout--stack.stack-dir-y > .align-y--end{
+    background: #000;
+}
+.layout--stack.stack-dir-y > .align-y--center{
+    background: #000;
+}
+.layout--stack.stack-dir-y > .align-y--stretch{
+    background: #000;
+}
