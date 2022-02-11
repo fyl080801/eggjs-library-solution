@@ -16,7 +16,9 @@
   },
   "devDependencies": {
     "@vue/cli-service": "^4.5.15",
-    "koa-webpack": "^6.0.0",
+    "koa-webpack": "^6.0.0"
+  },
+  "peerDependencies": {
     "webpack": "^4.46.0"
   },
   "eggPlugin": {
