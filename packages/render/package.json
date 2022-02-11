@@ -46,5 +46,6 @@
     "dep": [
       "@egglib/statics"
     ]
-  }
+  },
+  "gitHead": "396ca04254701da6cf2eb33d6d11ad9405615a53"
 }
