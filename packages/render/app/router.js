@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = (app, name) => {
-  const { prefix, external = [] } = app.config.render || {}
+  const { prefix, external = [], styles = [] } = app.config.render || {}
 
   const renderPrefix = app.normalizeUrl(
     typeof prefix === 'string' ? prefix : '/render',
@@ -22,6 +22,7 @@ module.exports = (app, name) => {
       ctx.body = {
         prefix: renderPrefix,
         external: JSON.stringify(external),
+        styles: JSON.stringify(styles),
       }
     },
   )

@@ -21,10 +21,10 @@ exports.render = {
   configRoot: path.resolve(process.cwd(), 'pages'),
   external: [
     'https://cdn.jsdelivr.net/npm/element-ui/lib/index.js',
-    'https://cdn.jsdelivr.net/npm/element-ui/lib/theme-chalk/index.css',
     '/public/render/component.js',
     '/public/render/extstyle.css',
   ],
+  styles: ['https://cdn.jsdelivr.net/npm/element-ui/lib/theme-chalk/index.css'],
 }
 
 exports.renderEditor = {
