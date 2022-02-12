@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueCompositionAPI from '@vue/composition-api'
+import * as VC from '@vue/composition-api'
 import JRender, { useGlobalRender } from '@jrender-legacy/core'
+import * as JR from '@jrender-legacy/core'
 import JRenderExtends from '@jrender-legacy/extends'
 import { LibExtends, RouteExtends } from './components'
 import { external } from './utils/app'
@@ -8,10 +10,8 @@ import App from './App'
 import 'systemjs'
 
 window.Vue = Vue
-window.VueCompositionAPI = VueCompositionAPI
-window.JRender = {
-  useGlobalRender,
-}
+window.VueCompositionAPI = VC
+window.JRender = JR
 
 const config = external ? JSON.parse(external) : []
 
