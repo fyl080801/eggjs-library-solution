@@ -13,7 +13,7 @@ const props = defineProps({
 
 const { state, config, click, remove, toggleExpand } = useDocumentTree()
 
-const status = reactive({
+const nodeStatus = reactive({
   isDragging: false,
   dragover: false,
 })
@@ -68,26 +68,26 @@ const onDragStart = (event) => {
   cloned.style.display = 'none'
   event.dataTransfer.setDragImage(cloned, 0, 0)
 
-  status.isDragging = true
+  nodeStatus.isDragging = true
 }
 
 const oDragEnd = () => {
-  status.isDragging = false
+  nodeStatus.isDragging = false
 }
 
 const onDragOver = (event) => {
   if (!isLeaf.value) {
     event.preventDefault()
-    status.dragover = true
+    nodeStatus.dragover = true
   }
 }
 
 const onDragleave = () => {
-  status.dragover = false
+  nodeStatus.dragover = false
 }
 
 const onDrop = () => {
-  status.dragover = false
+  nodeStatus.dragover = false
 }
 </script>
 
@@ -103,16 +103,17 @@ export default defineComponent({
   <div
     draggable="true"
     class="relative inline-grid b-layer r-1"
-    :class="{ 'bg-gray-400': status.isDragging }"
+    :class="{ 'bg-gray-400': nodeStatus.isDragging }"
     @dragstart.self="onDragStart"
     @dragend="oDragEnd"
   >
-    <div
-      class="inline-flex items-stretch justify-items-stretch overflow-hidden items-center border border-transparent hover:bg-gray-100"
+    <box
+      class="overflow-hidden border border-transparent hover:bg-gray-100"
       :class="[
-        { '!border-gray-500': status.dragover },
+        { '!border-gray-500': nodeStatus.dragover },
         // { 'bg-primary-r selected': isSelected && !zone.state.dragging },
       ]"
+      direction="row"
       @dragover="onDragOver"
       @dragleave="onDragleave"
       @drop="onDrop"
@@ -122,14 +123,14 @@ export default defineComponent({
       <div class="inline-grid place-content-stretch">
         <template v-if="!isLeaf">
           <div class="p-2 cursor-pointer" @click.stop="onToggleExpand">
-            <box class="justify-center items-center w-4 h-4">
+            <box class="justify-center !items-center w-4 h-4">
               {{ isOpened ? '-' : '+' }}
             </box>
           </div>
         </template>
         <template v-else>
           <div class="p-2 cursor-pointer">
-            <box class="justify-center items-center w-4 h-4"> ❖ </box>
+            <box class="justify-center !items-center w-4 h-4"> ❖ </box>
           </div>
         </template>
       </div>
@@ -147,7 +148,7 @@ export default defineComponent({
       >
         <box class="justify-center items-center w-4 h-4"> × </box>
       </div>
-    </div>
+    </box>
     <!-- 拖放区域 -->
     <div v-if="state.dragging" class="absolute h-4 z-1 w-full bottom-0">
       <Dropzone
@@ -159,15 +160,13 @@ export default defineComponent({
     <!-- 子元素 -->
     <div v-if="isOpened" class="inline-grid place-content-stretch">
       <template v-if="!isSlots">
-        <div
-          class="inline-flex items-stretch justify-items-stretch flex-col pl-4"
-        >
+        <box class="pl-6" direction="col">
           <component
             :is="NodeElementPanel"
             :nodeId="node.nodeId"
             :nodes="children"
           />
-        </div>
+        </box>
       </template>
       <!-- <template v-else>
           <div class="prop-list stack y indent"> pl-4

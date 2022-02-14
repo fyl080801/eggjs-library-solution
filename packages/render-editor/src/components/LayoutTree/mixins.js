@@ -1,4 +1,4 @@
-import { inject, provide } from '@vue/composition-api'
+import { inject, provide, reactive } from '@vue/composition-api'
 
 const documentTreeToken = Symbol('documentTreeToken')
 
@@ -53,5 +53,12 @@ export const useDocumentTree = (root) => {
     root.emit('node-remove', nodeId)
   }
 
-  provide(documentTreeToken, { state: root.state, config, to, click, remove, toggleExpand })
+  provide(documentTreeToken, {
+    state: root.state,
+    config,
+    to,
+    click,
+    remove,
+    toggleExpand,
+  })
 }

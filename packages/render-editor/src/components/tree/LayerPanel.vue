@@ -37,41 +37,7 @@ export default {
   data() {
     return {
       dragover: false,
-      nodes: [
-        { label: 'text', hasError: true, isSelected: true },
-        {
-          label: 'Box',
-          props: [
-            {
-              label: 'prop',
-              nodes: [
-                { label: 'Comp' },
-                { label: 'Text' },
-                { label: 'Box', props: [{ label: 'Prop' }] },
-                {
-                  label: 'Slot',
-                  props: [{ label: 'Prop', nodes: [{ label: 'Text' }, { label: 'Text' }] }],
-                },
-                {
-                  label: 'Comp',
-                  props: [
-                    { label: 'prop 1', nodes: [{ label: 'Text' }, { label: 'Text' }] },
-                    { label: 'prop 2', nodes: [] },
-                  ],
-                },
-                { label: 'text' },
-                {
-                  label: 'Comp',
-                  props: [
-                    { label: 'prop 1', nodes: [{ label: 'Text' }, { label: 'Text' }] },
-                    { label: 'prop 2', nodes: [] },
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-      ],
+      nodes: [],
     }
   },
   computed: {
