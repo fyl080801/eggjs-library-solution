@@ -41,6 +41,9 @@ module.exports = (app) => {
       const response = await ctx.curl(viewUrl, {
         method: 'GET',
         timeout: 500000,
+        headers: {
+          accept: 'text/html',
+        },
       })
 
       return response.data.toString()
