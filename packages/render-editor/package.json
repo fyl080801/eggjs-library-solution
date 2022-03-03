@@ -1,6 +1,6 @@
 {
   "name": "@egglib/render-editor",
-  "version": "0.0.4-alpha.3",
+  "version": "0.0.4-alpha.4",
   "description": "> TODO: description",
   "author": "fengyuanliang3",
   "homepage": "https://github.com/fyl080801/eggjs-library-solution#readme",
@@ -25,22 +25,22 @@
     "url": "https://github.com/fyl080801/eggjs-library-solution/issues"
   },
   "devDependencies": {
-    "@jrender-legacy/core": "^1.0.4",
-    "@jrender-legacy/extends": "^1.0.5",
-    "@vitejs/plugin-legacy": "^1.6.4",
-    "@vue/composition-api": "^1.4.6",
+    "@jrender-legacy/core": "^1.1.0",
+    "@jrender-legacy/extends": "^1.1.0",
+    "@vitejs/plugin-legacy": "^1.7.1",
+    "@vue/composition-api": "^1.4.7",
     "axios": "^0.26.0",
-    "core-js": "^3.21.0",
+    "core-js": "^3.21.1",
     "pinia": "^2.0.11",
     "systemjs": "^6.12.1",
     "unplugin-vue2-script-setup": "^0.9.3",
-    "vite": "^2.7.13",
+    "vite": "^2.8.4",
     "vite-plugin-vue2": "^1.9.3",
-    "vite-plugin-windicss": "^1.7.0",
+    "vite-plugin-windicss": "^1.7.1",
     "vue": "^2.6.14",
     "vue-router": "3",
     "vue-template-compiler": "^2.6.14",
-    "windicss": "^3.4.3"
+    "windicss": "^3.4.4"
   },
   "eggPlugin": {
     "name": "@egglib/render-editor",
