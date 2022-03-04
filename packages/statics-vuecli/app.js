@@ -6,7 +6,7 @@ module.exports = (app) => {
   const { clients = {} } = app.config.statics || {}
 
   if (Object.keys(clients).find((key) => clients[key].dev)) {
-    app.config.coreMiddleware.push('webpack')
+    app.config.coreMiddleware.splice(0, 0, 'vuecli')
   }
 
   app.setProvider({
