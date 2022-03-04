@@ -103,6 +103,7 @@ module.exports = {
       if (!client.dev || !this.staticProvider) {
         const config = this.statics[name]
         await ctx.render(path.resolve(config, view), data)
+        ctx.set('Content-Type', 'text/html')
       } else {
         const result = await this.staticProvider.viewInjector({
           name,
@@ -111,13 +112,12 @@ module.exports = {
         })
 
         if (typeof result !== 'string') {
-          return await next()
+          return
         }
 
         ctx.body = await ctx.renderString(result, data)
+        ctx.set('Content-Type', 'text/html')
       }
-
-      ctx.set('Content-Type', 'text/html')
     }
   },
 }
