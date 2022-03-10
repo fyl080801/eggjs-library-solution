@@ -6,7 +6,7 @@
   "homepage": "https://github.com/fyl080801/eggjs-library-solution#readme",
   "license": "ISC",
   "publishConfig": {
-    "registry": "https://registry.npmmirror.com/"
+    "access": "public"
   },
   "repository": {
     "type": "git",
