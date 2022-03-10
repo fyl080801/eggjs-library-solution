@@ -6,6 +6,8 @@ const urljoin = require('url-join')
 
 const STATICS = Symbol('Application#statcis')
 
+const PIPELINE = Symbol('Application#PIPELINE')
+
 const PROVIDERS = Symbol('Application#statcis_PROVIDERS')
 
 const getCallerFile = function () {
@@ -40,6 +42,13 @@ const getCallerFile = function () {
 }
 
 module.exports = {
+  get staticPipeline() {
+    if (!this[PIPELINE]) {
+      this[PIPELINE] = []
+    }
+    return this[PIPELINE]
+  },
+
   get statics() {
     if (!this[STATICS]) {
       this[STATICS] = {}

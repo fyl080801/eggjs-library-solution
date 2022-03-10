@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "egg": "^2.33.1",
-    "egg-scripts": "^2.15.2"
+    "egg-scripts": "^2.15.3"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0",
@@ -25,7 +25,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.4",
     "lerna": "^4.0.0",
-    "lint-staged": "^12.3.4",
+    "lint-staged": "^12.3.5",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2"
   },
@@ -36,7 +36,7 @@
     "prebuild": "npm run clean",
     "clean": "lerna run clean --parallel && rimraf dist",
     "build": "lerna run build",
-    "start": "egg-scripts start --daemon --title=egg-server-eggjs-test1",
+    "start": "egg-scripts start --daemon --title=egg-server-eggjs-test1 --env=prod",
     "stop": "egg-scripts stop --title=egg-server-eggjs-test1",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug --env=prod",

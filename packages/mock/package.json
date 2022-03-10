@@ -1,0 +1,25 @@
+{
+  "name": "@egglib/mock",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "fengyuanliang3 <--show-origin>",
+  "homepage": "https://github.com/fyl080801/eggjs-library-solution#readme",
+  "license": "ISC",
+  "publishConfig": {
+    "registry": "https://registry.npmmirror.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fyl080801/eggjs-library-solution.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fyl080801/eggjs-library-solution/issues"
+  },
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "chokidar": "^3.5.3"
+  },
+  "eggPlugin": {
+    "name": "@egglib/mock"
+  }
+}

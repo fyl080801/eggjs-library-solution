@@ -8,7 +8,6 @@ module.exports = (app, name) => {
   )
 
   app.router.all(app.normalizeUrl(normalizePrefix, '/api/v1/routes'), (ctx) => {
-    // console.log(ctx.method)
     ctx.body = {}
   })
 

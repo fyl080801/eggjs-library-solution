@@ -9,10 +9,10 @@ module.exports = {
     enable: !!process.env.curl,
     package: 'egg-request-curl',
   },
-  '@egglib/statics': {
-    enable: true,
+  '@egglib/mock': {
+    enable: false,
   },
-  '@egglib/statics-vite': {
+  '@egglib/statics': {
     enable: true,
   },
   '@egglib/render': {

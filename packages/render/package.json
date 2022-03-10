@@ -33,7 +33,7 @@
     "@jrender-legacy/extends": "^1.1.1",
     "@vitejs/plugin-legacy": "^1.7.1",
     "@vue/composition-api": "^1.4.9",
-    "axios": "^0.26.0",
+    "axios": "^0.26.1",
     "core-js": "^3.21.1",
     "systemjs": "^6.12.1",
     "vite": "^2.8.6",
@@ -45,6 +45,9 @@
     "name": "@egglib/render",
     "dep": [
       "@egglib/statics"
+    ],
+    "optionalDependencies": [
+      "@egglib/statics-vite"
     ]
   },
   "gitHead": "37445d4da0ec7c8552664ff701f18913a54a59c5"

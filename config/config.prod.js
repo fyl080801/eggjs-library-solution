@@ -2,20 +2,6 @@
 
 const path = require('path')
 
-exports.statics = {
-  default: '@egglib/render',
-  clients: {
-    '@egglib/render': {
-      dev: true,
-      // dist: '',
-    },
-    '@egglib/render-editor': {
-      dev: true,
-    },
-  },
-  env: {},
-}
-
 exports.render = {
   // prefix: '/render',
   configRoot: path.resolve(process.cwd(), 'pages'),
@@ -29,8 +15,4 @@ exports.render = {
 
 exports.renderEditor = {
   prefix: '/render-editor',
-}
-
-exports.mockService = {
-  mockPath: path.resolve(process.cwd(), 'mock'),
 }

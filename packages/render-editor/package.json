@@ -29,14 +29,14 @@
     "@jrender-legacy/extends": "^1.1.1",
     "@vitejs/plugin-legacy": "^1.7.1",
     "@vue/composition-api": "^1.4.9",
-    "axios": "^0.26.0",
+    "axios": "^0.26.1",
     "core-js": "^3.21.1",
     "pinia": "^2.0.11",
     "systemjs": "^6.12.1",
     "unplugin-vue2-script-setup": "^0.10.0",
     "vite": "^2.8.6",
     "vite-plugin-vue2": "^1.9.3",
-    "vite-plugin-windicss": "^1.8.2",
+    "vite-plugin-windicss": "^1.8.3",
     "vue": "^2.6.14",
     "vue-router": "3",
     "vue-template-compiler": "^2.6.14",
@@ -46,6 +46,9 @@
     "name": "@egglib/render-editor",
     "dep": [
       "@egglib/statics"
+    ],
+    "optionalDependencies": [
+      "@egglib/statics-vite"
     ]
   },
   "gitHead": "37445d4da0ec7c8552664ff701f18913a54a59c5"
