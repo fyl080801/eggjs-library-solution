@@ -16,7 +16,10 @@
         Please enable it to continue.
       </strong>
     </noscript>
-    <div id="app" data-prefix="{{prefix}}" data-external="{{external}}"></div>
+    <div id="app" data-prefix="{{prefix}}"></div>
     <script type="module" src="/src/main.js"></script>
+    {% for item in external %}
+    <script src="{{item}}"></script>
+    {% endfor %}
   </body>
 </html>

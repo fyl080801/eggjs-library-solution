@@ -21,8 +21,8 @@ exports.render = {
   configRoot: path.resolve(process.cwd(), 'pages'),
   external: [
     'https://cdn.jsdelivr.net/npm/element-ui/lib/index.js',
-    '/public/render/component.js',
-    '/public/render/extstyle.css',
+    // 'http://localhost:3001/public/render/component.js',
+    // 'http://localhost:3001/public/render/extstyle.css',
   ],
   styles: ['https://cdn.jsdelivr.net/npm/element-ui/lib/theme-chalk/index.css'],
 }

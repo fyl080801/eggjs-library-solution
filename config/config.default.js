@@ -8,15 +8,17 @@ module.exports = (appInfo) => {
 
   config.keys = appInfo.name + '_1636560035989_1239'
 
+  const packages = fs.readdirSync(path.resolve(process.cwd(), 'packages'))
+
   config.development = {
     overrideDefault: true,
     overrideIgnore: false,
     watchDirs: ['app', 'config', 'app.js', 'agent.js', 'packages', 'pages'],
     ignoreDirs: [
       'node_modules',
-      ...fs
-        .readdirSync(path.resolve(process.cwd(), 'packages'))
-        .map((dir) => `packages/${dir}/src`),
+      ...packages.map((dir) => `packages/${dir}/src`),
+      ...packages.map((dir) => `packages/${dir}/builder`),
+      ...packages.map((dir) => `packages/${dir}/output`),
     ],
   }
 
