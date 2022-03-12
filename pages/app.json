@@ -1,0 +1,5 @@
+{
+  "default": "/index",
+  "title": "Render Sample",
+  "script": "./extends/index.js"
+}
