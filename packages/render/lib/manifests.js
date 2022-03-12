@@ -18,12 +18,20 @@ module.exports = (app) => {
       fs.statSync(path.resolve(manifestRoot, item)).isDirectory(),
     )
     .forEach((item) => {
-      const mk = `render-manifest/${item}`
+      try {
+        const manifestFile = path.resolve(manifestRoot, item, 'manifest.json')
 
-      app.addPageConfig(mk, path.resolve(manifestRoot, item))
+        if (!fs.existsSync(manifestFile)) {
+          return
+        }
 
-      const info = require(path.resolve(manifestRoot, item, 'manifest.json'))
+        const mk = `render-manifest/${item}`
 
-      app.manifest[mk] = info
+        app.addPageConfig(mk, path.resolve(manifestRoot, item))
+
+        app.manifest[mk] = require(manifestFile)
+      } catch {
+        return
+      }
     })
 }

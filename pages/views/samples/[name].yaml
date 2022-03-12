@@ -9,3 +9,4 @@ fields:
           label: text1
         children:
           - type: el-input
+            model: model.aaaaa
