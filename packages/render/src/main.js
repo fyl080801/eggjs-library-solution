@@ -21,7 +21,9 @@ const existingImport = System.constructor.prototype.import
 
 System.constructor.prototype.import = function (args) {
   return Promise.resolve(existingImport.call(this, args)).then((result) => {
-    if (result.default && result.default.type === 'text/css') {
+    if (typeof result.setup === 'function') {
+      result.setup()
+    } else if (result.default && result.default.type === 'text/css') {
       styles.push(result.default)
     }
   })

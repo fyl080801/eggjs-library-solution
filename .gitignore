@@ -14,4 +14,4 @@ typings/
 lerna-debug.log
 dist
 node_modules
-app/
+/app

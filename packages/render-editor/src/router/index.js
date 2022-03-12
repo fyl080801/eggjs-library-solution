@@ -11,6 +11,11 @@ export const createRouter = () => {
     mode: 'history',
     routes: [
       {
+        name: 'upload',
+        path: '/upload',
+        component: () => import('../views/Upload.vue'),
+      },
+      {
         name: 'list',
         path: '/list',
         component: () => import('../views/List.vue'),
@@ -20,7 +25,7 @@ export const createRouter = () => {
         path: '/workspace',
         component: () => import('../views/Workspace.vue'),
       },
-      { path: '/', redirect: '/list' },
+      { path: '/', redirect: '/upload' },
     ],
   })
 }

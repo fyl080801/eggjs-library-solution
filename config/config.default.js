@@ -27,6 +27,17 @@ module.exports = (appInfo) => {
     },
   }
 
+  config.security = {
+    csrf: {
+      enable: false,
+    },
+  }
+
+  config.multipart = {
+    mode: 'file',
+    fileExtensions: ['.zip'],
+  }
+
   config.middleware = []
 
   const userConfig = {}

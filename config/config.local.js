@@ -7,7 +7,6 @@ exports.statics = {
   clients: {
     '@egglib/render': {
       dev: true,
-      // dist: '',
     },
     '@egglib/render-editor': {
       dev: true,
@@ -19,7 +18,10 @@ exports.statics = {
 exports.render = {
   // prefix: '/render',
   configRoot: path.resolve(process.cwd(), 'pages'),
-  external: ['https://cdn.jsdelivr.net/npm/element-ui/lib/index.js'],
+  external: [
+    'https://cdn.jsdelivr.net/npm/element-ui/lib/index.js',
+    '/public/test.js',
+  ],
   styles: ['https://cdn.jsdelivr.net/npm/element-ui/lib/theme-chalk/index.css'],
 }
 

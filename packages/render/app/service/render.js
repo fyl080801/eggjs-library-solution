@@ -47,10 +47,13 @@ const getAll = async (dir) => {
 }
 
 class RenderService extends Service {
-  async getRenderPage(path) {
-    let { configRoot } = this.app.config.render || {}
+  getRenderRoot() {
+    const { configRoot } = this.app.config.render || {}
 
-    configRoot = configRoot || resolve(process.cwd(), 'renders')
+    return configRoot || resolve(process.cwd(), 'renders')
+  }
+  async getRenderPage(path) {
+    const configRoot = this.getRenderRoot()
 
     if (!this.app.renderConfig) {
       this.app.renderConfig = {}
