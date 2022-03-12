@@ -31,6 +31,7 @@ module.exports = (app, name) => {
       fs.promises.mkdir(path.join(process.cwd(), 'app/public'))
     }
 
+    const renderRoot = ctx.service.render.getRenderRoot()
     const extname = path.extname(file.filename).toLowerCase()
     const filename = 'package' + extname
     const targetPath = path.join(process.cwd(), 'app/public', filename)
@@ -39,19 +40,20 @@ module.exports = (app, name) => {
 
     try {
       await pump(source, target)
+
       ctx.logger.info('save %s to %s', file.filepath, targetPath)
 
-      await fs.promises.rm(ctx.service.render.getRenderRoot(), {
+      await fs.promises.rm(renderRoot, {
         force: true,
         recursive: true,
       })
 
       await compressing[extname.replace('.', '')].uncompress(
         targetPath,
-        ctx.service.render.getRenderRoot(),
+        renderRoot,
       )
 
-      ctx.service.script.build()
+      ctx.service.script.build(renderRoot)
     } finally {
       // delete those request tmp files
       await ctx.cleanupRequestFiles()
