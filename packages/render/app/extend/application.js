@@ -2,6 +2,7 @@
 
 const renderToken = Symbol('Application#render')
 const renderConfigToken = Symbol('Application#renderConfig')
+const manifestToken = Symbol('Application#manifest')
 
 module.exports = {
   get renders() {
@@ -16,5 +17,12 @@ module.exports = {
   },
   set renderConfig(value) {
     this[renderConfigToken] = value
+  },
+
+  get manifest() {
+    if (!this[manifestToken]) {
+      this[manifestToken] = {}
+    }
+    return this[manifestToken]
   },
 }

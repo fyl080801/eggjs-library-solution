@@ -19,9 +19,17 @@ module.exports = (app, name) => {
     app.normalizeUrl(renderPrefix, '*'),
     app.viewInject(name, 'index.html'),
     (ctx) => {
+      const manifestExternal = []
+
+      Object.keys(app.manifest).forEach((key) => {
+        const entry = Object.values(app.manifest[key]).find((i) => i.isEntry)
+
+        manifestExternal.push(`/${key}/${entry.file}`)
+      })
+
       ctx.body = {
         prefix: renderPrefix,
-        external: JSON.stringify(external),
+        external: JSON.stringify(manifestExternal.concat(external)),
         styles,
       }
     },

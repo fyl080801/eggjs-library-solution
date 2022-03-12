@@ -18,9 +18,10 @@ exports.statics = {
 
 exports.render = {
   // prefix: '/render',
+  manifest: path.resolve(process.cwd(), 'manifest'),
   configRoot: path.resolve(process.cwd(), 'pages'),
-  external: ['https://cdn.jsdelivr.net/npm/element-ui/lib/index.js'],
-  styles: ['https://cdn.jsdelivr.net/npm/element-ui/lib/theme-chalk/index.css'],
+  external: [], // ['https://cdn.jsdelivr.net/npm/element-ui/lib/index.js'],
+  styles: [], // ['https://cdn.jsdelivr.net/npm/element-ui/lib/theme-chalk/index.css'],
 }
 
 exports.renderEditor = {
