@@ -637,19 +637,19 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@jrender-legacy/core@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.npmmirror.com/@jrender-legacy/core/-/core-1.1.1.tgz#cc4bc0c11f687c753f398e4144c3f7f69d968913"
-  integrity sha512-BeDEN3kIugmtt/tn8BEQHSKuwnzx1xnbSxgMt8bqx60anXQF7j7lAh1eE889AgyH/Pxgv/O5SOHssBJf3h970w==
+"@jrender-legacy/core@^1.1.5":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@jrender-legacy/core/-/core-1.1.5.tgz#11229df5e98305858b127a3e80a80f15bf5659ee"
+  integrity sha512-Oja20GohNizr8d5r6m6u7DlkpA06tDXbifHRa+shpyLepXrde9AudqTGSh57nOP7Lq8FufvJhlc4qz9qPls2Ow==
   dependencies:
     core-js "^3.21.1"
 
-"@jrender-legacy/extends@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.npmmirror.com/@jrender-legacy/extends/-/extends-1.1.1.tgz#3b1e3a573099831f1fe809248bdcf615248a3793"
-  integrity sha512-oT/3VeALeXdmhvsNwfiidd5ZB3KCbuHJSwEuAuoRvvWPphrQp1o2gqbY77UIpSS/dKnVrykqqAXfyMLsqIiHwQ==
+"@jrender-legacy/extends@^1.1.5":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@jrender-legacy/extends/-/extends-1.1.5.tgz#b8275456262751d38c2525991a3945ab72a8b034"
+  integrity sha512-qA5uK5wuCuZMlROfwu8zKGMdRD5r2GdvFSEMQ/Go6++O3oktZ4iD2wQrUUWKTLpkZTmtPgTdo2JRRzChqfCLoQ==
   dependencies:
-    "@jrender-legacy/core" "^1.1.1"
+    "@jrender-legacy/core" "^1.1.5"
     core-js "^3.21.1"
 
 "@jridgewell/resolve-uri@^3.0.3":

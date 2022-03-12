@@ -31,4 +31,4 @@ fields:
         on:
           click: $:()=>TO('/views/category1/index')
 
-  - type: test-component
+  # - type: test-component

@@ -19,11 +19,7 @@ exports.statics = {
 exports.render = {
   // prefix: '/render',
   configRoot: path.resolve(process.cwd(), 'pages'),
-  external: [
-    'https://cdn.jsdelivr.net/npm/element-ui/lib/index.js',
-    '/public/render/component.js',
-    '/public/render/extstyle.css',
-  ],
+  external: ['https://cdn.jsdelivr.net/npm/element-ui/lib/index.js'],
   styles: ['https://cdn.jsdelivr.net/npm/element-ui/lib/theme-chalk/index.css'],
 }
 

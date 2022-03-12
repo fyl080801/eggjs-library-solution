@@ -55,13 +55,13 @@ class RenderService extends Service {
     if (!this.app.renderConfig) {
       this.app.renderConfig = {}
 
-      const configFile = resolve(configRoot, '.render')
+      const configFile = resolve(configRoot, 'app.json')
 
       const haveConfig = fs.existsSync(configFile)
 
       if (haveConfig) {
         try {
-          const config = jsyaml.load(await fs.promises.readFile(configFile))
+          const config = JSON.parse(await fs.promises.readFile(configFile))
           this.app.renderConfig = Object.assign(this.app.renderConfig, config)
         } catch {}
       }

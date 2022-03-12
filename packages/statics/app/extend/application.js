@@ -87,7 +87,7 @@ module.exports = {
     const client = clients[name] || {}
 
     if (!client.dev || !this.staticProvider) {
-      this.statics[name] = path.resolve(dirname, client.dist || 'dist')
+      this.statics[name] = dir || path.resolve(dirname, client.dist || 'dist')
     } else {
       this.staticProvider.setConfig({
         name,
