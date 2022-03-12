@@ -1,8 +1,0 @@
-{
-  "parserOptions": { "sourceType": "module" },
-  "globals": {
-    "window": true,
-    "document": true,
-    "history": true
-  }
-}

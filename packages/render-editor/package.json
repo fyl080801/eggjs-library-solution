@@ -25,8 +25,8 @@
     "url": "https://github.com/fyl080801/eggjs-library-solution/issues"
   },
   "devDependencies": {
-    "@jrender-legacy/core": "^1.1.1",
-    "@jrender-legacy/extends": "^1.1.1",
+    "@jrender-legacy/core": "^1.1.5",
+    "@jrender-legacy/extends": "^1.1.5",
     "@vitejs/plugin-legacy": "^1.7.1",
     "@vue/composition-api": "^1.4.9",
     "axios": "^0.26.1",

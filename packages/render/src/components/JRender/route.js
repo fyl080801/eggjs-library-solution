@@ -1,6 +1,7 @@
 import { prefix } from '../../utils/app'
+import { defineRenderSetup } from '@jrender-legacy/core'
 
-export const RouteExtends = ({ addFunction }) => {
+export const RouteExtends = defineRenderSetup(({ addFunction }) => {
   const buildStateEvent = (type) => {
     const historyEvent = history[type]
 
@@ -31,4 +32,4 @@ export const RouteExtends = ({ addFunction }) => {
   addFunction('BACK', () => {
     history.back()
   })
-}
+})
