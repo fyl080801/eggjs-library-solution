@@ -5,7 +5,8 @@ const path = require('path')
 
 module.exports = (app) => {
   const manifestRoot =
-    app.config.render.manifest || path.resolve(process.cwd(), 'manifest')
+    (app.config.render && app.config.render.manifest) ||
+    path.resolve(process.cwd(), 'manifest')
 
   if (!fs.existsSync(manifestRoot)) {
     return

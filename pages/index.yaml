@@ -23,12 +23,16 @@ fields:
         on:
           click: $:()=>TO('/views/samples/aaaaa')
       - type: el-button
-        domProps:
-          innerText: go sample22
+        # domProps:
+        #   innerText: go sample22
         props:
           type: primary
           icon: el-icon-search
         on:
           click: $:()=>TO('/views/category1/index')
+        children:
+          - type: span
+            domProps:
+              innerText: go sample22
 
   # - type: test-component
