@@ -6,7 +6,8 @@ module.exports = (app) => {
   const { clients = {} } = app.config.statics || {}
 
   if (Object.keys(clients).find((key) => clients[key].dev)) {
-    app.config.coreMiddleware.splice(0, 0, 'vuecli')
+    const corsIndex = app.config.coreMiddleware.indexOf('cors')
+    app.config.coreMiddleware.splice(corsIndex + 1, 0, 'vuecli')
   }
 
   app.setProvider({
