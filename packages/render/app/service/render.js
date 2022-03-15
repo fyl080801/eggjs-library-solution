@@ -13,7 +13,9 @@ const paramRegx = /^\[[a-zA-Z]+\]$/g
 const paramContentRegx = /[a-zA-Z]+/g
 
 const tryToParam = (input) => {
-  return paramRegx.test(input) ? `:${input.match(paramContentRegx)}` : input
+  return new RegExp(paramRegx).test(input)
+    ? `:${input.match(paramContentRegx)}`
+    : input
 }
 
 const getAll = async (dir) => {
