@@ -1,6 +1,6 @@
 'use strict'
 
-const { join } = require('path')
+const path = require('path')
 
 const root = require('app-root-path')
 const webpack = require('webpack')
@@ -19,7 +19,16 @@ module.exports = async (opts) => {
   if (!compiler) {
     if (!config) {
       config = require(options.configPath ||
-        join(root.path, 'webpack.config.js'))
+        path.join(root.path, 'webpack.config.js'))
+    }
+
+    const haveHot = config.plugins?.find(
+      (item) => item instanceof webpack.HotModuleReplacementPlugin,
+    )
+
+    if (!haveHot) {
+      config.plugins = config.plugins || []
+      config.plugins.push(new webpack.HotModuleReplacementPlugin())
     }
 
     compiler = webpack(config)

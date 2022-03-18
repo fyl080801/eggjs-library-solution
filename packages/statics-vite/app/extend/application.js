@@ -191,27 +191,29 @@ module.exports = {
       this._viteInit = true
     }
 
-    const { matcher } = this.config.statics || {}
+    // const { matcher } = this.config.statics || {}
 
-    const staticsMatcher =
-      matcher && typeof matcher === 'function'
-        ? matcher
-        : (ctx) => {
-            let key = Object.keys(this.statics || {}).find((p) => {
-              return ctx.request.url.indexOf(`/${p}/`) === 0
-            })
+    // const staticsMatcher =
+    //   matcher && typeof matcher === 'function'
+    //     ? matcher
+    //     : (ctx) => {
+    //         let key = Object.keys(this.statics || {}).find((p) => {
+    //           return ctx.request.url.indexOf(`/${p}/`) === 0
+    //         })
 
-            if (!key) {
-              key = Object.keys(this.viteConfigs || {}).find((p) => {
-                return ctx.request.url.indexOf(`/${p}/`) === 0
-              })
-            }
+    //         if (!key) {
+    //           key = Object.keys(this.viteConfigs || {}).find((p) => {
+    //             return ctx.request.url.indexOf(`/${p}/`) === 0
+    //           })
+    //         }
 
-            return key || this.config.statics.default
-          }
+    //         return key || this.config.statics.default
+    //       }
 
     return this._viteService[
-      typeof currentCtx === 'string' ? currentCtx : staticsMatcher(currentCtx)
+      typeof currentCtx === 'string'
+        ? currentCtx
+        : this.matchStatic(currentCtx, this.viteConfigs)
     ]
   },
 }

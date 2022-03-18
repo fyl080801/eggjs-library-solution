@@ -15,11 +15,11 @@
     "egg-view-nunjucks": "^2.3.0"
   },
   "devDependencies": {
-    "@vue/cli-service": "^4.5.15",
-    "koa-webpack": "^6.0.0"
+    "@vue/cli-service": "4",
+    "koa-webpack": "6"
   },
   "peerDependencies": {
-    "webpack": "^4.46.0"
+    "webpack": "4"
   },
   "eggPlugin": {
     "name": "@egglib/statics-vuecli",

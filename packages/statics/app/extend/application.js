@@ -129,4 +129,27 @@ module.exports = {
       }
     }
   },
+
+  matchStatic(ctx, configs) {
+    const { matcher } = this.config.statics || {}
+
+    const staticsMatcher =
+      matcher && typeof matcher === 'function'
+        ? matcher
+        : (ctx, _configs) => {
+            let key = Object.keys(this.statics || {}).find((p) => {
+              return ctx.request.url.indexOf(`/${p}/`) === 0
+            })
+
+            if (!key) {
+              key = Object.keys(_configs || {}).find((p) => {
+                return ctx.request.url.indexOf(`/${p}/`) === 0
+              })
+            }
+
+            return key || this.config.statics.default
+          }
+
+    return staticsMatcher(ctx, configs)
+  },
 }
