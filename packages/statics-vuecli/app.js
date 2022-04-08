@@ -6,8 +6,8 @@ module.exports = (app) => {
   const { clients = {} } = app.config.statics || {}
 
   if (Object.keys(clients).find((key) => clients[key].dev)) {
-    const corsIndex = app.config.coreMiddleware.indexOf('cors')
-    app.config.coreMiddleware.splice(corsIndex + 1, 0, 'vuecli')
+    const corsIndex = app.config.coreMiddleware.indexOf('bodyParser')
+    app.config.coreMiddleware.splice(corsIndex, 0, 'vuecli')
   }
 
   app.setProvider({
@@ -45,6 +45,7 @@ module.exports = (app) => {
         headers: {
           accept: 'text/html',
         },
+        rejectUnauthorized: false,
       })
 
       return response.data.toString()
