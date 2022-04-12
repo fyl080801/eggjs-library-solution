@@ -6091,10 +6091,10 @@ escope@^3.3.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-config-egg@^10.0.0:
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-egg/-/eslint-config-egg-10.0.0.tgz#46c8ee4cc762661b1c84b37aa18530e8a5cfe657"
-  integrity sha512-CA0hs3cxvp0HfjWvBuU4wK3Zrw6SyfSZl4WWfvoV8IbI30VsVUWXdETVfXpMVsadXkMiJ0U37X8tICNSBIyAIw==
+eslint-config-egg@^11.0.1:
+  version "11.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-egg/-/eslint-config-egg-11.0.1.tgz#89b8016deca3b158e2429a66f82646d7e96484c0"
+  integrity sha512-v7sA+uPSJ15ezTuD1F2PnEgDUvakIbionFhbZaMAF9fs3vDHAMzmVUJWMDGEbTt4DXE7VMCYTPUGgB6YFcCr2g==
   dependencies:
     "@babel/core" "^7.16.0"
     "@babel/eslint-parser" "^7.16.3"
@@ -14217,10 +14217,10 @@ unpipe@1.0.0, unpipe@~1.0.0:
   resolved "https://registry.yarnpkg.com/unpipe/-/unpipe-1.0.0.tgz#b2bf4ee8514aae6165b4817829d21b2ef49904ec"
   integrity sha1-sr9O6FFKrmFltIF4KdIbLvSZBOw=
 
-unplugin-vue2-script-setup@^0.10.0:
-  version "0.10.0"
-  resolved "https://registry.npmmirror.com/unplugin-vue2-script-setup/-/unplugin-vue2-script-setup-0.10.0.tgz#1cd253d7c5d204a2b573d1eb9a8b73d9274afe51"
-  integrity sha512-Zra5vrlHkpzC9vITP5e0EbtVq2MfbaaDoBG8Gx1GDkpUuLJ3Sohnj4523v9KlOH4DSqInESGamzEVPUjFFBNyA==
+unplugin-vue2-script-setup@^0.10.2:
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/unplugin-vue2-script-setup/-/unplugin-vue2-script-setup-0.10.2.tgz#d1e20bfccbf49aa1d3e456663f361c824d4f8eb0"
+  integrity sha512-m886AZIZCXMiAbTbOPQEk+MqmtHBX3dENheFXjcHSRetwBsD0KVDBteQVD5XrSBzDdQKeKw6IU4dV+2eGcLJ0A==
   dependencies:
     "@antfu/utils" "^0.5.0"
     "@babel/core" "^7.17.5"

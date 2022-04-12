@@ -33,7 +33,7 @@
     "core-js": "^3.21.1",
     "pinia": "^2.0.13",
     "systemjs": "^6.12.1",
-    "unplugin-vue2-script-setup": "^0.10.0",
+    "unplugin-vue2-script-setup": "^0.10.2",
     "vite": "^2.8.6",
     "vite-plugin-vue2": "^1.9.3",
     "vite-plugin-windicss": "^1.8.3",

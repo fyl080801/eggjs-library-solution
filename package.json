@@ -20,7 +20,7 @@
     "egg-bin": "^4.19.0",
     "egg-mock": "^4.2.0",
     "eslint": "8.13.0",
-    "eslint-config-egg": "^10.0.0",
+    "eslint-config-egg": "^11.0.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.4",
@@ -30,7 +30,10 @@
     "rimraf": "^3.0.2"
   },
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=16.0.0"
+  },
+  "volta": {
+    "node": "16.14.2"
   },
   "scripts": {
     "prebuild": "npm run clean",
