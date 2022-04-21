@@ -19,10 +19,15 @@ module.exports = (options) => {
     if (matchedKey) {
       const matchedProxy = options[matchedKey]
 
+      const instance =
+        typeof matchedProxy === 'function'
+          ? matchedProxy(ctx.params, ctx)
+          : matchedProxy
+
       const proxy = koa2connect(
         createProxyMiddleware(
-          new URL(originpath, matchedProxy.target).pathname,
-          matchedProxy,
+          new URL(originpath, instance.target).pathname,
+          instance,
         ),
       )
 
