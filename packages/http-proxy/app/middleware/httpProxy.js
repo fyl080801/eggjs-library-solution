@@ -20,9 +20,7 @@ module.exports = (options) => {
       const matchedProxy = options[matchedKey]
 
       const instance =
-        typeof matchedProxy === 'function'
-          ? matchedProxy(ctx.params, ctx)
-          : matchedProxy
+        typeof matchedProxy === 'function' ? matchedProxy(ctx) : matchedProxy
 
       const proxy = koa2connect(
         createProxyMiddleware(
