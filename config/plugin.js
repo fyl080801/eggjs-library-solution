@@ -10,7 +10,7 @@ module.exports = {
     package: 'egg-request-curl',
   },
   '@egglib/mock': {
-    enable: false,
+    enable: true,
   },
   '@egglib/statics': {
     enable: true,

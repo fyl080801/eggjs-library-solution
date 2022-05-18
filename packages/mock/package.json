@@ -17,7 +17,8 @@
   },
   "dependencies": {
     "chalk": "^5.0.1",
-    "chokidar": "^3.5.3"
+    "chokidar": "^3.5.3",
+    "mockjs": "^1.1.0"
   },
   "eggPlugin": {
     "name": "@egglib/mock"

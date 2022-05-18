@@ -1,12 +1,19 @@
 'use strict'
 
-module.exports = (options) => {
-  if (process.env.DEV_MODE !== 'mock') {
-    return function (ctx, next) {
-      return next()
-    }
-  }
+const Mock = require('mockjs')
 
+const responseFake = (url, type, respond) => {
+  return {
+    url: new RegExp(`${url}`),
+    type: type || 'get',
+    response(ctx) {
+      console.log('request invoke:' + ctx.path)
+      return Mock.mock(respond instanceof Function ? respond(ctx) : respond)
+    },
+  }
+}
+
+module.exports = (options) => {
   const { mockPath } = options
 
   const table = new Map()
@@ -15,13 +22,14 @@ module.exports = (options) => {
     const mocks = require(mockPath)
 
     for (const mock of mocks) {
-      const name = mock.type.toUpperCase()
+      const faked = responseFake(mock.url, mock.type, mock.response)
+      const name = faked.type.toUpperCase()
       let method = table.get(name)
       if (!method) {
         method = []
         table.set(name, method)
       }
-      method.push(mock)
+      method.push(faked)
     }
   }
 
@@ -35,7 +43,7 @@ module.exports = (options) => {
   }
 
   const chokidar = require('chokidar')
-  const chalk = require('chalk')
+  // const chalk = require('chalk')
 
   registerRoutes()
 
@@ -49,13 +57,15 @@ module.exports = (options) => {
         try {
           unregisterRoutes()
           registerRoutes()
-          console.log(
-            chalk.magentaBright(
-              `\n > Mock Server hot reload success! changed  ${path}`,
-            ),
-          )
+          console.log(`\n > Mock Server hot reload success! changed  ${path}`)
+          // console.log(
+          //   chalk.magentaBright(
+          //     `\n > Mock Server hot reload success! changed  ${path}`,
+          //   ),
+          // )
         } catch (error) {
-          console.log(chalk.redBright(error))
+          // console.log(chalk.redBright(error))
+          console.log(error)
         }
       }
     })
@@ -73,6 +83,15 @@ module.exports = (options) => {
       return next()
     }
 
-    ctx.body = mock.response(ctx)
+    const response = mock.response(ctx)
+    // 需要补充头信息填充
+
+    const headers = response.headers || {}
+
+    Object.keys(headers).forEach((key) => {
+      ctx.set(key, headers[key])
+    })
+
+    ctx.body = response.data
   }
 }
