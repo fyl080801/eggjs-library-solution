@@ -24,8 +24,7 @@ module.exports = (options) => {
 
       const proxy = koa2connect(
         createProxyMiddleware(
-          new URL(originpath, instance.target).pathname,
-          instance,
+          instance instanceof Promise ? await instance : instance,
         ),
       )
 
