@@ -30,6 +30,7 @@
     "egg-view-nunjucks": "^2.3.0"
   },
   "devDependencies": {
+    "koa-connect": "^2.1.0",
     "vite": "^4.0.4"
   },
   "eggPlugin": {

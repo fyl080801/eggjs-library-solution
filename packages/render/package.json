@@ -34,14 +34,13 @@
     "@jrender-legacy/core": "^1.2.8",
     "@jrender-legacy/extends": "^1.2.8",
     "@vitejs/plugin-legacy": "^3.0.1",
-    "@vue/composition-api": "^1.4.9",
+    "@vitejs/plugin-vue2": "^2.2.0",
     "axios": "^0.26.1",
     "core-js": "^3.21.1",
     "systemjs": "^6.12.1",
     "vite": "^4.0.4",
-    "vite-plugin-vue2": "^2.0.3",
     "vue": "^2.7.14",
-    "vue-template-compiler": "^2.6.14"
+    "vue-demi": "^0.13.11"
   },
   "eggPlugin": {
     "name": "@egglib/render",

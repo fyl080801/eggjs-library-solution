@@ -141,6 +141,7 @@ module.exports = {
                     clientPort: wsPorts[index],
                   },
                 },
+                appType: 'custom',
               }),
             )
           }

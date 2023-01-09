@@ -1,5 +1,5 @@
 <script setup>
-import { computed, reactive } from '@vue/composition-api'
+import { computed, reactive } from 'vue'
 import { useDocumentTree } from './mixins'
 import NodeElementPanel from './NodeElementPanel.vue'
 

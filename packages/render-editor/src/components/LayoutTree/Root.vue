@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, watch } from '@vue/composition-api'
+import { reactive, watch } from 'vue'
 import NodeElementPanel from './NodeElementPanel.vue'
 import Dragzone from './Dropzone.vue'
 import { useDocumentTree } from './mixins'

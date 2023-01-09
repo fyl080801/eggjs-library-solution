@@ -1,5 +1,5 @@
 <script>
-import { defineComponent, set } from '@vue/composition-api'
+import { defineComponent, set } from 'vue'
 import { useEditorStore } from '../store'
 
 export default defineComponent({
