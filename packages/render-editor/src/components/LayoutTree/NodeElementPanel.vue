@@ -14,7 +14,7 @@ const { state } = useDocumentTree()
 </script>
 
 <script>
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'NodeElementPanel',

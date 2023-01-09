@@ -1,8 +1,6 @@
 'use strict'
 
-// const path = require('path')
 const { createServer, loadConfigFromFile, mergeConfig } = require('vite')
-// const fs = require('fs')
 const net = require('net')
 const os = require('os')
 
@@ -10,38 +8,6 @@ const serviceToken = Symbol('serviceToken')
 const serviceInitToken = Symbol('Application#serviceInitToken')
 
 const VITE = Symbol('Application#vite')
-// const STATICS = Symbol('Application#statcis')
-
-// const getCallerFile = function () {
-//   let filename
-
-//   const pst = Error.prepareStackTrace
-
-//   Error.prepareStackTrace = function (err, stack) {
-//     return stack
-//   }
-
-//   try {
-//     let callerFile
-//     const err = new Error()
-//     const currentFile = err.stack.shift().getFileName()
-
-//     while (err.stack.length) {
-//       callerFile = err.stack.shift().getFileName()
-
-//       if (currentFile !== callerFile) {
-//         filename = callerFile
-//         break
-//       }
-//     }
-//   } catch (err) {
-//     //
-//   }
-
-//   Error.prepareStackTrace = pst
-
-//   return path.dirname(filename)
-// }
 
 const getLocalHosts = () => {
   const interfaces = os.networkInterfaces()
@@ -124,13 +90,6 @@ module.exports = {
     return this[VITE]
   },
 
-  // get statics() {
-  //   if (!this[STATICS]) {
-  //     this[STATICS] = {}
-  //   }
-  //   return this[STATICS]
-  // },
-
   get _viteService() {
     if (!this[serviceToken]) {
       this[serviceToken] = {}
@@ -182,6 +141,7 @@ module.exports = {
                     clientPort: wsPorts[index],
                   },
                 },
+                appType: 'custom',
               }),
             )
           }

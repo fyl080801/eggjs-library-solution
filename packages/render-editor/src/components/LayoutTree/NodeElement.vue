@@ -1,5 +1,5 @@
 <script setup>
-import { computed, reactive } from '@vue/composition-api'
+import { computed, reactive } from 'vue'
 import NodeElementPanel from './NodeElementPanel.vue'
 import Dropzone from './Dropzone.vue'
 import { useDocumentTree } from './mixins'
@@ -92,7 +92,7 @@ const onDrop = () => {
 </script>
 
 <script>
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'NodeElement',

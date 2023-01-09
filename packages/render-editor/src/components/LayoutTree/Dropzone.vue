@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from '@vue/composition-api'
+import { computed, ref } from 'vue'
 import { useDocumentTree } from './mixins'
 
 const props = defineProps({
