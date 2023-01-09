@@ -1,6 +1,6 @@
 {
   "name": "@egglib/statics-vuecli",
-  "version": "1.1.11-alpha.12+3875b83",
+  "version": "1.1.11-alpha.13+3170379",
   "description": "> TODO: description",
   "author": "fyl080801 <fyl080801@hotmail.com>",
   "homepage": "",
@@ -11,7 +11,7 @@
   },
   "scripts": {},
   "dependencies": {
-    "@egglib/statics": "^1.0.6-alpha.16+3875b83",
+    "@egglib/statics": "^1.0.6-alpha.17+3170379",
     "egg-request-curl": "^1.1.0",
     "egg-view-nunjucks": "^2.3.0"
   },
@@ -30,5 +30,5 @@
       "@egglib/statics"
     ]
   },
-  "gitHead": "3875b83ed32e46d688f404e1cde54869636968f4"
+  "gitHead": "31703792c45421d29532f5f7827b835fbb513d73"
 }

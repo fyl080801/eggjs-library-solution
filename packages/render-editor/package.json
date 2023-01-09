@@ -1,6 +1,6 @@
 {
   "name": "@egglib/render-editor",
-  "version": "0.0.4-alpha.2+3875b83",
+  "version": "0.0.4-alpha.3+3170379",
   "description": "> TODO: description",
   "author": "fengyuanliang3",
   "homepage": "https://github.com/fyl080801/eggjs-library-solution#readme",
@@ -51,5 +51,5 @@
       "@egglib/statics-vite"
     ]
   },
-  "gitHead": "3875b83ed32e46d688f404e1cde54869636968f4"
+  "gitHead": "31703792c45421d29532f5f7827b835fbb513d73"
 }

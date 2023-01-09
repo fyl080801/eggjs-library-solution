@@ -37,7 +37,8 @@
     "node": ">=16.0.0"
   },
   "volta": {
-    "node": "16.14.2"
+    "node": "16.14.2",
+    "npm": "9.2.0"
   },
   "scripts": {
     "prebuild": "npm run clean",
