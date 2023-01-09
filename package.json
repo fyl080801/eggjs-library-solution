@@ -8,6 +8,10 @@
   ],
   "author": "fyl080801",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "egg": {
     "declarations": false
   },
