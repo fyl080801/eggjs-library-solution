@@ -1,6 +1,6 @@
 {
   "name": "@egglib/render-editor",
-  "version": "0.0.4-alpha.11",
+  "version": "0.0.5-alpha.1",
   "description": "> TODO: description",
   "author": "fengyuanliang3",
   "homepage": "https://github.com/fyl080801/eggjs-library-solution#readme",
@@ -11,7 +11,8 @@
     "app.js"
   ],
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "repository": {
     "type": "git",
@@ -25,21 +26,19 @@
     "url": "https://github.com/fyl080801/eggjs-library-solution/issues"
   },
   "devDependencies": {
-    "@jrender-legacy/core": "^1.1.7",
-    "@jrender-legacy/extends": "^1.1.7",
-    "@vitejs/plugin-legacy": "^1.7.1",
-    "@vue/composition-api": "^1.4.9",
+    "@jrender-legacy/core": "^1.2.8",
+    "@jrender-legacy/extends": "^1.2.8",
+    "@vitejs/plugin-legacy": "^3.0.1",
+    "@vitejs/plugin-vue2": "^2.2.0",
     "axios": "^0.26.1",
     "core-js": "^3.21.1",
     "pinia": "^2.0.13",
     "systemjs": "^6.12.1",
-    "unplugin-vue2-script-setup": "^0.10.2",
-    "vite": "^2.8.6",
-    "vite-plugin-vue2": "^1.9.3",
+    "vite": "^4.0.4",
     "vite-plugin-windicss": "^1.8.3",
-    "vue": "^2.6.14",
+    "vue": "^2.7.14",
+    "vue-demi": "^0.13.11",
     "vue-router": "3",
-    "vue-template-compiler": "^2.6.14",
     "windicss": "^3.5.1"
   },
   "eggPlugin": {
@@ -51,5 +50,5 @@
       "@egglib/statics-vite"
     ]
   },
-  "gitHead": "935f6268bd55fbbf17d4b2bce83593d3a6854a9a"
+  "gitHead": "5b5080a45a2cd7266ffb71423c789e61306501d4"
 }

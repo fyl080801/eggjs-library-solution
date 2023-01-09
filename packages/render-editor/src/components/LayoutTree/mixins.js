@@ -1,4 +1,4 @@
-import { inject, provide, reactive } from '@vue/composition-api'
+import { inject, provide } from 'vue'
 
 const documentTreeToken = Symbol('documentTreeToken')
 

@@ -1,4 +1,4 @@
-import { reactive, nextTick } from '@vue/composition-api'
+import { reactive, nextTick } from 'vue'
 import { request } from '../../utils/request'
 
 export const LibExtends = ({ addDataSource, onBeforeBind }) => {

@@ -1,8 +1,8 @@
 'use strict'
 
 const path = require('path')
-
 const fs = require('fs')
+const { useServiceProvider } = require('@egglib/statics')
 
 module.exports = (app) => {
   const { clients = {} } = app.config.statics || {}
@@ -11,8 +11,8 @@ module.exports = (app) => {
     app.config.coreMiddleware.push('vite')
   }
 
-  app.setProvider({
-    setConfig({ name, client, rootPath }) {
+  useServiceProvider(({ onViewConfig, onViewInject }) => {
+    onViewConfig(({ name, client, rootPath }) => {
       app.viteConfigs[name] = {
         name,
         rootPath,
@@ -21,9 +21,9 @@ module.exports = (app) => {
           client.configFile || 'vite.config.js',
         ),
       }
-    },
+    })
 
-    async viewInjector({ name, ctx, view }) {
+    onViewInject(async ({ name, ctx, view }) => {
       const config = app.viteConfigs[name]
 
       const server = await app.getServer(name)
@@ -38,6 +38,6 @@ module.exports = (app) => {
       )
 
       return content
-    },
+    })
   })
 }

@@ -6,7 +6,7 @@ import {
   nextTick,
   onMounted,
   onBeforeUnmount,
-} from '@vue/composition-api'
+} from 'vue'
 import { request } from './utils/request'
 import { prefix } from './utils/app'
 

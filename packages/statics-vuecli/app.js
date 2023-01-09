@@ -1,5 +1,6 @@
 'use strict'
 
+const { useServiceProvider } = require('@egglib/statics/lib/service')
 const path = require('path')
 
 module.exports = (app) => {
@@ -10,8 +11,8 @@ module.exports = (app) => {
     app.config.coreMiddleware.splice(corsIndex + 1, 0, 'vuecli')
   }
 
-  app.setProvider({
-    setConfig({ name, rootPath }) {
+  useServiceProvider(({ onViewConfig, onViewInject }) => {
+    onViewConfig(({ name, rootPath }) => {
       const Service = require('@vue/cli-service')
 
       const ins = new Service(rootPath)
@@ -28,9 +29,9 @@ module.exports = (app) => {
         },
         hotClient: {},
       }
-    },
+    })
 
-    async viewInjector({ name, ctx, view }) {
+    onViewInject(async ({ name, ctx, view }) => {
       const config = app.vuecliConfigs[name]
 
       const viewUrl = `${ctx.request.protocol}://${path.join(
@@ -49,6 +50,6 @@ module.exports = (app) => {
       })
 
       return response.data.toString()
-    },
+    })
   })
 }

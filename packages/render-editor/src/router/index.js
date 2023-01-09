@@ -1,4 +1,4 @@
-import { getCurrentInstance } from '@vue/composition-api'
+import { getCurrentInstance } from 'vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { prefix } from '../utils/app'

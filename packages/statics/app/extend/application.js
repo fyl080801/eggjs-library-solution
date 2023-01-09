@@ -3,12 +3,12 @@
 const path = require('path')
 
 const urljoin = require('url-join')
+const { isPromise } = require('../../lib/helpers')
+const { useServiceProvider } = require('../../lib/service')
 
 const STATICS = Symbol('Application#statcis')
 
 const PIPELINE = Symbol('Application#PIPELINE')
-
-const PROVIDERS = Symbol('Application#statcis_PROVIDERS')
 
 const getCallerFile = function () {
   let filename
@@ -56,29 +56,10 @@ module.exports = {
     return this[STATICS]
   },
 
-  get staticProvider() {
-    return this[PROVIDERS]
-  },
-  set staticProvider(value) {
-    this[PROVIDERS] = value
-  },
-
   normalizeUrl(...args) {
     const url = urljoin(...args)
 
     return url.startsWith('/') ? url : `/${url}`
-  },
-
-  setProvider(provider) {
-    if (
-      !provider ||
-      typeof provider.setConfig !== 'function' ||
-      typeof provider.viewInjector !== 'function'
-    ) {
-      return
-    }
-
-    this.staticProvider = provider
   },
 
   addPageConfig(name, dir) {
@@ -86,10 +67,14 @@ module.exports = {
     const dirname = dir || getCallerFile.call(this)
     const client = clients[name] || {}
 
-    if (!client.dev || !this.staticProvider) {
+    const { getService } = useServiceProvider()
+
+    const onViewConfig = getService('onViewConfig')
+
+    if (!client.dev || !onViewConfig) {
       this.statics[name] = dir || path.resolve(dirname, client.dist || 'dist')
     } else {
-      this.staticProvider.setConfig({
+      onViewConfig({
         name,
         client,
         rootPath: dirname,
@@ -109,16 +94,22 @@ module.exports = {
         (typeof ctx.body === 'object' && ctx.body) || {},
       )
 
-      if (!client.dev || !this.staticProvider) {
+      const { getService } = useServiceProvider()
+
+      const onViewInject = getService('onViewInject')
+
+      if (!client.dev || !onViewInject) {
         const config = this.statics[name]
         await ctx.render(path.resolve(config, view), data)
         ctx.set('Content-Type', 'text/html')
       } else {
-        const result = await this.staticProvider.viewInjector({
+        let result = onViewInject({
           name,
           ctx,
           view,
         })
+
+        result = isPromise(result) ? await result : result
 
         if (typeof result !== 'string') {
           return
