@@ -25,10 +25,11 @@
     "url": "https://github.com/fyl080801/eggjs-library-solution/issues"
   },
   "dependencies": {
+    "@egglib/statics": "^1.0.5",
     "egg-view-nunjucks": "^2.3.0"
   },
   "devDependencies": {
-    "vite": "^2.8.6"
+    "vite": "^4.0.4"
   },
   "eggPlugin": {
     "name": "@egglib/statics-vite",
