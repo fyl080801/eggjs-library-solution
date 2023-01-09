@@ -1,6 +1,6 @@
 {
   "name": "@egglib/statics-vite",
-  "version": "1.0.5-alpha.17+3170379",
+  "version": "1.0.5-alpha.18+75b3780",
   "description": "A eggjs plugin use to integration vite dev server",
   "author": "fengyuanliang3 <--show-origin>",
   "homepage": "https://github.com/fyl080801/eggjs-library-solution#readme",
@@ -25,7 +25,7 @@
     "url": "https://github.com/fyl080801/eggjs-library-solution/issues"
   },
   "dependencies": {
-    "@egglib/statics": "^1.0.6-alpha.17+3170379",
+    "@egglib/statics": "^1.0.6-alpha.18+75b3780",
     "egg-view-nunjucks": "^2.3.0"
   },
   "devDependencies": {
@@ -39,5 +39,5 @@
       "@egglib/statics"
     ]
   },
-  "gitHead": "31703792c45421d29532f5f7827b835fbb513d73"
+  "gitHead": "75b37801a53a5b99493b262d6c1608a38025dad8"
 }
