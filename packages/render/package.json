@@ -1,6 +1,6 @@
 {
   "name": "@egglib/render",
-  "version": "0.5.4-alpha.9+75b3780",
+  "version": "0.5.4-alpha.11+5b5080a",
   "description": "动态渲染模块",
   "author": "fengyuanliang3",
   "homepage": "https://github.com/fyl080801/eggjs-library-solution#readme",
@@ -52,5 +52,5 @@
       "@egglib/statics-vite"
     ]
   },
-  "gitHead": "75b37801a53a5b99493b262d6c1608a38025dad8"
+  "gitHead": "5b5080a45a2cd7266ffb71423c789e61306501d4"
 }

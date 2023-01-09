@@ -1,6 +1,6 @@
 {
   "name": "@egglib/http-proxy",
-  "version": "1.0.6",
+  "version": "1.0.7-alpha.4+5b5080a",
   "description": "> TODO: description",
   "author": "fengyuanliang3 <--show-origin>",
   "homepage": "https://github.com/fyl080801/eggjs-library-solution#readme",
@@ -23,5 +23,6 @@
   },
   "eggPlugin": {
     "name": "@egglib/http-proxy"
-  }
+  },
+  "gitHead": "5b5080a45a2cd7266ffb71423c789e61306501d4"
 }

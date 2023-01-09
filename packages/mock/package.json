@@ -1,6 +1,6 @@
 {
   "name": "@egglib/mock",
-  "version": "1.1.0",
+  "version": "1.1.1-alpha.6+5b5080a",
   "description": "> TODO: description",
   "author": "fengyuanliang3 <--show-origin>",
   "homepage": "https://github.com/fyl080801/eggjs-library-solution#readme",
@@ -24,5 +24,5 @@
   "eggPlugin": {
     "name": "@egglib/mock"
   },
-  "gitHead": "935f6268bd55fbbf17d4b2bce83593d3a6854a9a"
+  "gitHead": "5b5080a45a2cd7266ffb71423c789e61306501d4"
 }
