@@ -1,7 +1,5 @@
 'use strict'
 
-const koaConnect = require('koa-connect')
-
 function makeInjectedResponse(ctx, end) {
   const res = ctx.res
 
@@ -56,21 +54,21 @@ function handler(ctx, connectMiddleware) {
   })
 }
 
-// function koaConnect(connectMiddleware) {
-//   return async (ctx, next) => {
-//     ctx.respond = false
-//     try {
-//       const goNext = await handler(ctx, connectMiddleware)
-//       if (goNext) {
-//         ctx.respond = true
-//         return next()
-//       }
-//     } catch (err) {
-//       ctx.respond = true
-//       throw err
-//     }
-//   }
-// }
+function koaConnect(connectMiddleware) {
+  return async (ctx, next) => {
+    ctx.respond = false
+    try {
+      const goNext = await handler(ctx, connectMiddleware)
+      if (goNext) {
+        ctx.respond = true
+        return next()
+      }
+    } catch (err) {
+      ctx.respond = true
+      throw err
+    }
+  }
+}
 
 module.exports = () => {
   return async (ctx, next) => {
@@ -78,8 +76,7 @@ module.exports = () => {
     // console.log(server.middlewares)
     if (server && server.middlewares) {
       // 因为vite的中间件是基于express，而egg是基于koa，因此要转换
-      const middleware = koaConnect(server.middlewares)
-      await middleware(ctx, next)
+      await koaConnect(server.middlewares)(ctx, next)
     } else {
       await next()
     }
