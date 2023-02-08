@@ -22,13 +22,18 @@ module.exports = (options) => {
       const instance =
         typeof matchedProxy === 'function' ? matchedProxy(ctx) : matchedProxy
 
-      const proxy = koa2connect(
-        createProxyMiddleware(
-          instance instanceof Promise ? await instance : instance,
-        ),
+      const proxy = createProxyMiddleware(
+        instance instanceof Promise ? await instance : instance,
       )
 
-      await proxy(ctx, next)
+      const onUpgrade = (req, socket, head) => {
+        proxy.upgrade(req, socket, head)
+        ctx.app.off('upgrade', onUpgrade)
+      }
+
+      ctx.app.on('upgrade', onUpgrade)
+
+      await koa2connect(proxy)(ctx, next)
     } else {
       await next()
     }
