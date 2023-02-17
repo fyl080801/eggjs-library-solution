@@ -16,23 +16,29 @@ module.exports = (options) => {
         : pathMatching({ match: key })({ path: originpath })
     })
 
-    if (matchedKey) {
-      const matchedProxy = options[matchedKey]
-
-      const instance =
-        typeof matchedProxy === 'function' ? matchedProxy(ctx) : matchedProxy
-
-      const config = instance instanceof Promise ? await instance : instance
-
-      const proxy = createProxyMiddleware(config)
-
-      if (config.ws) {
-        proxy.upgrade(ctx.req, ctx.socket, ctx.header)
-      }
-
-      await koa2connect(proxy)(ctx, next)
-    } else {
+    if (!matchedKey) {
       await next()
+      return
     }
+
+    const matchedProxy = options[matchedKey]
+
+    if (!matchedProxy) {
+      await next()
+      return
+    }
+
+    const instance =
+      typeof matchedProxy === 'function' ? matchedProxy(ctx) : matchedProxy
+
+    const config = instance instanceof Promise ? await instance : instance
+
+    const proxy = createProxyMiddleware(config)
+
+    if (config.ws) {
+      proxy.upgrade(ctx.req, ctx.socket, ctx.header)
+    }
+
+    await koa2connect(proxy)(ctx, next)
   }
 }
