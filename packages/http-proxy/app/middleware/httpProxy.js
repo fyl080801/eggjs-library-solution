@@ -23,15 +23,15 @@ module.exports = (options) => {
 
     const matchedProxy = options[matchedKey]
 
-    if (!matchedProxy) {
-      await next()
-      return
-    }
-
     const instance =
       typeof matchedProxy === 'function' ? matchedProxy(ctx) : matchedProxy
 
     const config = instance instanceof Promise ? await instance : instance
+
+    if (!config) {
+      await next()
+      return
+    }
 
     const proxy = createProxyMiddleware(config)
 
