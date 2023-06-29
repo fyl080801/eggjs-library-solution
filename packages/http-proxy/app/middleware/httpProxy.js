@@ -35,19 +35,10 @@ module.exports = (options) => {
 
     const proxy = createProxyMiddleware(config)
 
-    if (config.ws) {
-      ctx.app.server.on('upgrade', async (req, socket, header) => {
-        if (typeof config.onUpgrade === 'function') {
-          const handled = config.onUpgrade(req, socket, header)
-
-          if (handled instanceof Promise) {
-            await handled
-          }
-        }
-        proxy.upgrade(req, socket, header)
-      })
-    } else {
+    if (!config.ws) {
       await koa2connect(proxy)(ctx, next)
+    } else {
+      await next()
     }
   }
 }
