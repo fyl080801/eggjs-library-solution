@@ -10,18 +10,26 @@ module.exports = (options) => {
   return async (ctx, next) => {
     const originpath = ctx.request.originalUrl || ctx.request.url
 
-    const matchedKey = Object.keys(options).find((key) => {
-      return key instanceof RegExp
-        ? new RegExp(key).test(originpath)
-        : pathMatching({ match: key })({ path: originpath })
-    })
+    let matchedProxy = null
 
-    if (!matchedKey) {
+    if (Array.isArray(options)) {
+      const matchedIndex = options.findIndex((item) => {
+        return item.match instanceof RegExp
+          ? new RegExp(item.match).test(originpath)
+          : pathMatching({ match: item.match })({ path: originpath })
+      })
+      matchedProxy = options[matchedIndex] && options[matchedIndex].proxy
+    } else if (typeof options === 'object') {
+      const matchedKey = Object.keys(options || {}).find((key) => {
+        return pathMatching({ match: key })({ path: originpath })
+      })
+      matchedProxy = options[matchedKey]
+    }
+
+    if (!matchedProxy) {
       await next()
       return
     }
-
-    const matchedProxy = options[matchedKey]
 
     const instance =
       typeof matchedProxy === 'function' ? matchedProxy(ctx) : matchedProxy
