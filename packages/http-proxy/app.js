@@ -20,17 +20,25 @@ class AppBootHook {
     this.app.server.on('upgrade', async (req, socket, header) => {
       const originpath = req.originalUrl || req.url
 
-      const matchedKey = Object.keys(options).find((key) => {
-        return key instanceof RegExp
-          ? new RegExp(key).test(originpath)
-          : pathMatching({ match: key })({ path: originpath })
-      })
+      let matchedProxy = null
 
-      if (!matchedKey) {
-        return
+      if (Array.isArray(options)) {
+        const matchedIndex = options.findIndex((item) => {
+          return item.match instanceof RegExp
+            ? new RegExp(item.match).test(originpath)
+            : pathMatching({ match: item.match })({ path: originpath })
+        })
+        matchedProxy = options[matchedIndex] && options[matchedIndex].proxy
+      } else if (typeof options === 'object') {
+        const matchedKey = Object.keys(options || {}).find((key) => {
+          return pathMatching({ match: key })({ path: originpath })
+        })
+        matchedProxy = options[matchedKey]
       }
 
-      const matchedProxy = options[matchedKey]
+      if (!matchedProxy) {
+        return
+      }
 
       const instance =
         typeof matchedProxy === 'function'
