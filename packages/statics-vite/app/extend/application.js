@@ -132,7 +132,7 @@ module.exports = {
               mergeConfig(viteConfig, {
                 mode: 'development',
                 root: config.rootPath,
-                base: `/${config.name}/`,
+                base: `${config.name}/`,
                 server: {
                   middlewareMode: true,
                   cors: false,
