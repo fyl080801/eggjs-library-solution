@@ -16,7 +16,7 @@ module.exports = (_, app) => {
 
     if (typeof config === 'string') {
       app.config.static.dir.push({
-        prefix: `/${key}/`,
+        prefix: key ? `/${key}/` : '',
         dir: config,
       })
     }
